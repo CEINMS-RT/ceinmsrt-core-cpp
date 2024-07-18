@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation xml:lang="en"/>
+  </xs:annotation>
+  
+  <xs:simpleType name="MuscleListOptimizationType">
+    <xs:list itemType="xs:string"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name="TresholdType">
+    <xs:list itemType="xs:double"/>
+  </xs:simpleType>
+  
+  <xs:complexType name="AlgorithmSimulatedAnnealingType">
+    <xs:sequence>
+      <xs:element name="noEpsilon" type="xs:int"/>
+      <xs:element name="rt" type="xs:double"/>
+      <xs:element name="T" type="xs:double"/>
+      <xs:element name="NS" type="xs:int"/>
+      <xs:element name="NT" type="xs:int"/>
+      <xs:element name="epsilon" type="xs:double"/>
+      <xs:element name="maxNoEval" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="LMElementType"/>
+  <xs:complexType name="SimplexElementType"/>
+  
+  <xs:complexType name="AlgorithmType">
+    <xs:choice>
+      <xs:element name="SimulatedAnnealing" type="AlgorithmSimulatedAnnealingType"/>
+      <xs:element name="LM" type="LMElementType"/>
+	  <xs:element name="Simplex" type="SimplexElementType"/>
+	  <xs:element name="ErrorDrivenAdaptation" type="AlgorithmEDAType"/>
+    </xs:choice>
+  </xs:complexType>
+  
+  <xs:complexType name="MuscleInTheLoopType">
+    <xs:sequence>
+      <xs:element name="trackedMuscles" type="MuscleListOptimizationType"/>
+      <xs:element name="optimizedMuscles" type="MuscleListOptimizationType"/>
+      <xs:element name="DOFsOptimized" type="MuscleListOptimizationType"/>
+      <xs:element name="optimizationCriterion" type="xs:string" />
+      <xs:element name="wheightOptimizedMuscle" type="xs:double" />
+      <xs:element name="wheightNonOptimizedMuscle" type="xs:double"/>
+      <xs:element name="reductionFactor" type="xs:double"/>
+      <xs:element name="nCyclesRef" type="xs:int"/>
+      <xs:element name="nCyclesOptimization" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="HybridOptimizationType">
+    <xs:sequence>
+      <xs:element name="alpha" type="xs:double"/>
+      <xs:element name="beta" type="xs:double"/>
+      <xs:element name="gamma" type="xs:double"/>
+      <xs:element name="trackedMuscles" type="MuscleListOptimizationType"/>
+      <xs:element name="predictedMuscles" type="MuscleListOptimizationType"/>
+      <xs:element name="DOFsOptimized" type="MuscleListOptimizationType"/>
+      <xs:element name="performanceCriterion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="OnlineCalibrationType">
+    <xs:sequence>
+      <xs:element name="trackedMuscles" type="MuscleListOptimizationType"/>
+      <xs:element name="predictedMuscles" type="MuscleListOptimizationType"/>
+      <xs:element name="BufferSize" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="MuscleParameterType">
+    <xs:sequence>
+      <xs:element name="trackedMuscles" type="MuscleListOptimizationType"/>
+	  <xs:element name="alpha" type="xs:double"/>
+      <xs:element name="beta" type="xs:double"/>
+      <xs:element name="gamma" type="xs:double"/>
+      <xs:element name="MuscleForceTreshold" type="TresholdType"/>
+      <xs:element name="MuscleLengthTreshold" type="TresholdType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="OptimizationType">
+    <xs:sequence>
+      <xs:element name="Algorithm" type="AlgorithmType"/>
+	  <xs:element name="MuscleInTheLoop" type="MuscleInTheLoopType" minOccurs= "0"/>
+      <xs:element name="Hybrid" type="HybridOptimizationType" minOccurs= "0"/>
+	  <xs:element name="OnlineCalibration" type="OnlineCalibrationType" minOccurs= "0"/>
+      <xs:element name="MuscleParameter" type="MuscleParameterType" minOccurs= "0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="optimization" type="OptimizationType"/>
+ </xs:schema>

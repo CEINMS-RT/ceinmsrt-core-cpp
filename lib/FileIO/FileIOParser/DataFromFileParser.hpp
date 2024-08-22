@@ -22,5 +22,3 @@ public:
     void parseDataSources(std::shared_ptr<DataSources>& dataSources);
     void parseDataSources(const std::vector<std::string>& fileNames, std::shared_ptr<DataSources>& dataSources);
 };
-
-#endif

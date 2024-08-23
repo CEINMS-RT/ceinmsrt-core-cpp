@@ -9,13 +9,17 @@
 	url = https://github.com/ET-BE/AdsClient.git
 [submodule "plugin/TwincatEMGPlugin"]
 	path = plugin/TwincatEMGPlugin
-	url = https://github.com/CEINMS-RT/ceinmsrt-plugin-twincatemg-cpp.git
+	url = git@github.com:CEINMS-RT/ceinmsrt-plugin-twincatemg-cpp.git
+	branch = development
 [submodule "plugin/TwincatPlugin"]
 	path = plugin/TwincatPlugin
-	url = https://github.com/CEINMS-RT/ceinmsrt-plugin-twincat-cpp.git
+	url = git@github.com:CEINMS-RT/ceinmsrt-plugin-twincat-cpp.git
+	branch = development
 [submodule "plugin/XsensPlugin"]
 	path = plugin/XsensPlugin
-	url = https://github.com/CEINMS-RT/ceinmsrt-plugin-xsens-cpp.git
+	url = git@github.com:CEINMS-RT/ceinmsrt-plugin-xsens-cpp.git
+	branch = development
 [submodule "plugin/ROSPlugin"]
 	path = plugin/ROSPlugin
-	url = https://github.com/CEINMS-RT/ceinmsrt-plugin-ros-cpp.git
+	url = git@github.com:CEINMS-RT/ceinmsrt-plugin-ros-cpp.git
+	branch = development

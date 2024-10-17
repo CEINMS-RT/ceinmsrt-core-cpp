@@ -1,0 +1,31 @@
+# This is a sample build configuration for C++ – Make.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: be1et/ceinms-platform:latest
+
+pipelines:
+  default:
+    - step:
+        # Double the resources for this build
+        size: 2x
+        # caches:
+        #   - "builddir"
+        script:
+          # Prepare build
+          - mkdir -p build && cd build && cmake .. -DOPENSIM_INSTALL_DIR=/opensim_install -Wno-dev -DCMAKE_CXX_FLAGS="-w" -DCOMPILE_TESTS=ON
+          # We build with hidden warnings, which is bad, but there are so many warnings regular output is drowned out
+          # Build
+          - cmake --build . --verbose
+          - cd ../
+        artifacts:
+          - data/**
+          - bin/**
+    # - step:
+    #     size: 2x
+    #     script:
+    #      - ./bin/Unix/TestProducerVirtual
+# definitions:
+#   caches:
+#     builddir: build

@@ -428,3 +428,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+build/
+cfg/*[mM]odel/
+cfg/Output*/
+cfg/SplineCoeff/

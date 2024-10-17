@@ -1,0 +1,25 @@
+[submodule "lib/Gui/QCustomPlot"]
+	path = lib/Gui/QCustomPlot
+	url = https://github.com/ET-BE/QCustomPlot.git
+[submodule "lib/tclap"]
+	path = lib/tclap
+	url = https://github.com/ET-BE/tclap.git
+[submodule "plugin/lib/AdsClient"]
+	path = plugin/lib/AdsClient
+	url = https://github.com/ET-BE/AdsClient.git
+[submodule "plugin/TwincatEMGPlugin"]
+	path = plugin/TwincatEMGPlugin
+	url = ../ceinmsrt-plugin-twincatemg-cpp.git
+	branch = development
+[submodule "plugin/TwincatPlugin"]
+	path = plugin/TwincatPlugin
+	url = ../ceinmsrt-plugin-twincat-cpp.git
+	branch = development
+[submodule "plugin/XsensPlugin"]
+	path = plugin/XsensPlugin
+	url = ../ceinmsrt-plugin-xsens-cpp.git
+	branch = development
+[submodule "plugin/ROSPlugin"]
+	path = plugin/ROSPlugin
+	url = ../ceinmsrt-plugin-ros-cpp.git
+	branch = development

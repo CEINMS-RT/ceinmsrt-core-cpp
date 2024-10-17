@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+    </xs:documentation>
+  </xs:annotation>
+  
+  <xs:complexType name = "ExecutionEMGType">
+	<xs:sequence>
+	  <xs:element name="ip" type="xs:string"/>
+	  <xs:element name="port" type="xs:string"/>
+	    <xs:element name="hpFilter" type="Filter"/>
+  		<xs:element name="lpFilter" type="Filter"/>
+  		<xs:element name="dcFilter" type="Filter"/>
+  		<xs:element name="maxEMG" type="MaxEMG" />
+	</xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name = "CoeffList">
+      <xs:list itemType = "xs:double"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name = "MaxEMG">
+      <xs:list itemType = "xs:double"/>
+  </xs:simpleType>
+  
+  <xs:complexType name="Filter">
+  	<xs:sequence>
+  		<xs:element name= "aCoeff" type="CoeffList"/>
+  		<xs:element name= "bCoeff" type="CoeffList"/>
+  	</xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="executionEMG" type="ExecutionEMGType"/>
+  
+</xs:schema>  

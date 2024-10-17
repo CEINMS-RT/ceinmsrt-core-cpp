@@ -1,0 +1,4 @@
+add_subdirectory(compareFiles)
+add_subdirectory(resampleData)
+add_subdirectory(correlation)
+add_subdirectory(mapFromFile)

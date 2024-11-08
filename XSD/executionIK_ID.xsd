@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"/>
+	</xs:annotation>
+	
+	<xs:complexType name = "MarkerType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="weight" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name = "CoeffListIK">
+		<xs:list itemType = "xs:double"/>
+	</xs:simpleType>
+	
+	<xs:complexType name="FilterIK">
+  		<xs:sequence>
+  			<xs:element name= "aCoeff" type="CoeffListIK"/>
+			<xs:element name= "bCoeff" type="CoeffListIK"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Markers">
+		<xs:sequence>
+			<xs:element name="marker" type="MarkerType" minOccurs= "1" maxOccurs = "unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "IKMarkerType">
+		<xs:sequence>
+			<xs:element name="lpFilterMarker" type="FilterIK"/>
+			<xs:element name="maxError" type="xs:double" default="0.00001" minOccurs= "0"/>
+			<xs:element name="markersList" type="Markers"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "ImuType">
+		<xs:all>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="body" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:complexType name = "IKImuType">
+		<xs:sequence>
+			<xs:element name="imu" type="ImuType" minOccurs= "1" maxOccurs = "unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "KalmanOptionType">
+		<xs:sequence>
+			<xs:element name="p" type="xs:double" default="5" minOccurs= "0"/>
+			<xs:element name="r" type="xs:double" default="0.00001"  minOccurs= "0"/>
+			<xs:element name="sigma_da" type="xs:double" default="50000"  minOccurs= "0"/>
+			<xs:element name="dt" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "KalmanType">
+		<xs:sequence>
+			<xs:element name="use" type="xs:boolean" default="true" minOccurs= "0"/>
+			<xs:element name="kalmanOption" type="KalmanOptionType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "IKOptionType">
+		<xs:sequence>
+			<xs:element name="numberOfThread" type="xs:integer" default="3" minOccurs= "0"/>
+			<xs:element name="enforceIKConstraintUse" type="xs:boolean" default="false" minOccurs= "0"/>
+			<xs:element name="kalman" type="KalmanType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "IKChoice">
+		<xs:choice>
+			<xs:element name="imus" type="IKImuType"/>
+			<xs:element name="markers" type="IKMarkerType"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:complexType name = "IKType">
+		<xs:sequence>
+	 		<xs:element name="ikOption" type="IKOptionType"/>
+	 		<xs:element name="dataFrom" type="IKChoice"/>
+	 	</xs:sequence>
+	</xs:complexType>
+	
+  <xs:simpleType name = "PlateForceBody">
+      <xs:list itemType = "xs:string"/>
+  </xs:simpleType>
+	
+	<xs:complexType name = "IDType">
+		<xs:sequence>
+			<xs:element name="use" type="xs:boolean" default="true" minOccurs= "0"/>
+			<xs:element name="lpFilterGRF" type="FilterIK"/>
+			<xs:element name="plateForceBody" type="PlateForceBody"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name = "ExecutionIKType">
+		<xs:all>
+			<xs:element name="ik" type="IKType"/>
+			<xs:element name="id" type="IDType"/>
+			<xs:element name="OsimFile" type="xs:string"/>
+			<xs:element name="LabFile" type="xs:string"/>
+			<xs:element name="TranslateFile" type="xs:string"/>
+			<xs:element name="ip" type="xs:string"/>
+			<xs:element name="port" type="xs:int"/>
+			<xs:element name="Fc" type="xs:int" default="6" minOccurs= "0"/>
+			<xs:element name="externalLoadsXml" type="xs:string"/>
+			<xs:element name="ikTaskFilename" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:element name="executionIK" type="ExecutionIKType"/>
+	
+</xs:schema>

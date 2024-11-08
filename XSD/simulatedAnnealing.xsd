@@ -1,0 +1,93 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      Parameters for Simulated Annealing.
+    </xs:documentation>
+  </xs:annotation>
+  
+  <xs:simpleType name = "DofCalSequence">
+      <xs:list itemType = "xs:string"/>
+  </xs:simpleType>
+  
+  <xs:complexType name = "TrialsSequence">
+    <xs:sequence>
+  	  <xs:element name="trialName" type="xs:string"/>
+  	  <xs:element name="cropMinTimeFromZero" type="xs:double"/>
+  	  <xs:element name="cropMaxTimeFromZero" type="xs:double"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name = "Trials">
+  	<xs:sequence>
+      	<xs:element name="directory" type="xs:string"/>
+      	<xs:element name="trial" type="TrialsSequence" minOccurs= "1" maxOccurs = "unbounded"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name = "PreScaling">
+  	<xs:sequence>
+  		<xs:element name="use" type="xs:boolean"/>
+      	<xs:element name="unscaledOsimFile" type="xs:string"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name = "ComputeSpline">
+  	<xs:sequence>
+  		<xs:element name="use" type="xs:boolean"/>
+      	<xs:element name="printingOption" type="xs:int" minOccurs= "0"/>
+      	<xs:element name="numberOfNode" type="xs:int" minOccurs= "0"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name = "DofCalibrationSequence">
+  <xs:sequence>
+  	<xs:element name="dofs" type="DofCalSequence" minOccurs= "1" maxOccurs = "unbounded"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+    <xs:complexType name = "OptionCalibration">
+  	<xs:sequence>
+      <xs:element name = "noEpsilon" type = "xs:int" />
+      <xs:element name = "RT" type = "xs:double" minOccurs= "0" />
+      <xs:element name = "T" type = "xs:double" minOccurs= "0" />
+      <xs:element name = "NS" type = "xs:int" minOccurs= "0" />
+      <xs:element name = "NT" type = "xs:int" minOccurs= "0" />
+      <xs:element name = "epsilon" type = "xs:double" />
+      <xs:element name = "maxNoEval" type = "xs:int" />
+  	</xs:sequence>
+  </xs:complexType>
+  
+   <xs:complexType name = "Calibration">
+  	<xs:sequence>
+		<xs:element name="use" type="xs:boolean"/>
+      	<xs:element name="objectiveFunction" type="xs:string"/>
+		<xs:element name="filterEMG" type="xs:boolean" minOccurs= "0"/>
+		<xs:element name="EMD" type="xs:double" minOccurs= "0"/>
+		<xs:element name="dofToCalibrate" type="DofCalibrationSequence"/>
+      	<xs:element name="trials" type="Trials"/>
+		<xs:element name="option" type="OptionCalibration"/>
+		<xs:element name="inputSubjectXMLName" type="xs:string"/>
+		<xs:element name="outputSubjectXMLName" type="xs:string"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+
+  
+  <xs:complexType name = "SimulatedAnnealingType">
+    <xs:sequence>
+      
+      <xs:element name="EMGProccesing" type="xs:string" minOccurs= "0"/>
+      <xs:element name="osimFile" type="xs:string"/>
+      <xs:element name="subjectXML" type="xs:string"/>
+      <xs:element name="nameOfSubject" type="xs:string"/>
+      <xs:element name="dofsSpline" type="DofCalSequence"/>
+      <xs:element name="computeSpline" type="ComputeSpline"/>
+      <xs:element name="preScaling" type="PreScaling" minOccurs= "0"/>
+      <xs:element name="calibration" type="Calibration"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name = "simulatedAnnealing" type="SimulatedAnnealingType"/>
+  
+</xs:schema>  
+   

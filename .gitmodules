@@ -19,3 +19,18 @@
 [submodule "plugin/ROSPlugin"]
 	path = plugin/ROSPlugin
 	url = ../ceinmsrt-plugin-ros-cpp.git
+[submodule "plugin/EMG_Delsys"]
+	path = plugin/EMG_Delsys
+	url = ../ceinmsrt-plugin-delsys-cpp
+[submodule "plugin/RTOSIMPlugin"]
+	path = plugin/RTOSIMPlugin
+	url = ../ceinmsrt-plugin-rtosim-cpp
+[submodule "plugin/EMG_UDP_Simulink"]
+	path = plugin/EMG_UDP_Simulink
+	url = ../ceinmsrt-plugin-emgudp-cpp
+[submodule "plugin/TorquePositionUDPPlugin"]
+	path = plugin/TorquePositionUDPPlugin
+	url = ../ceinmsrt-plugin-udp-cpp
+[submodule "plugin/InsolePlugin"]
+	path = plugin/InsolePlugin
+	url = ../ceinmsrt-plugin-moticon-cpp

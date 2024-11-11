@@ -37,7 +37,10 @@ option(RPI "Unknown logger option" OFF)
 option(SWIG_PYTHON "Compile with Swig for Python" OFF)
 option(SWIG_JAVA "Compile with Swig for Java" OFF)
 option(COMPILE_PLUGIN "Setting this parameter to ON will give the possibility to compile the plugins for CEINMS" OFF)
+<<<<<<< HEAD
 option(COMPILE_TESTS "Enable to compile tests" OFF)
+=======
+>>>>>>> 1c99a9e5d94ec46dea44074bfa089ee70e792b31
 option(VERBOSE "Compile with extra program output" ON)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -224,10 +227,6 @@ add_subdirectory(src)
 
 if(COMPILE_PLUGIN)
     add_subdirectory(plugin)
-endif()
-
-if(COMPILE_TESTS)
-    add_subdirectory(tests)
 endif()
 
 

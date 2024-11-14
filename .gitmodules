@@ -1,36 +1,48 @@
 [submodule "lib/Gui/QCustomPlot"]
 	path = lib/Gui/QCustomPlot
 	url = https://github.com/ET-BE/QCustomPlot.git
+	ignore = dirty
 [submodule "lib/tclap"]
 	path = lib/tclap
 	url = https://github.com/ET-BE/tclap.git
+	ignore = dirty
 [submodule "plugin/lib/AdsClient"]
 	path = plugin/lib/AdsClient
 	url = https://github.com/ET-BE/AdsClient.git
+	ignore = dirty
 [submodule "plugin/TwincatEMGPlugin"]
 	path = plugin/TwincatEMGPlugin
 	url = ../ceinmsrt-plugin-twincatemg-cpp.git
+	ignore = dirty
 [submodule "plugin/TwincatPlugin"]
 	path = plugin/TwincatPlugin
 	url = ../ceinmsrt-plugin-twincat-cpp.git
+	ignore = dirty
 [submodule "plugin/XsensPlugin"]
 	path = plugin/XsensPlugin
 	url = ../ceinmsrt-plugin-xsens-cpp.git
+	ignore = dirty
 [submodule "plugin/ROSPlugin"]
 	path = plugin/ROSPlugin
 	url = ../ceinmsrt-plugin-ros-cpp.git
+	ignore = dirty
 [submodule "plugin/EMG_Delsys"]
 	path = plugin/EMG_Delsys
 	url = ../ceinmsrt-plugin-delsys-cpp
+	ignore = dirty
 [submodule "plugin/RTOSIMPlugin"]
 	path = plugin/RTOSIMPlugin
 	url = ../ceinmsrt-plugin-rtosim-cpp
+	ignore = dirty
 [submodule "plugin/EMG_UDP_Simulink"]
 	path = plugin/EMG_UDP_Simulink
 	url = ../ceinmsrt-plugin-emgudp-cpp
+	ignore = dirty
 [submodule "plugin/TorquePositionUDPPlugin"]
 	path = plugin/TorquePositionUDPPlugin
 	url = ../ceinmsrt-plugin-udp-cpp
+	ignore = dirty
 [submodule "plugin/InsolePlugin"]
 	path = plugin/InsolePlugin
 	url = ../ceinmsrt-plugin-moticon-cpp
+	ignore = dirty

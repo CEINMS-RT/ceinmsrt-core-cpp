@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(CEINMS)
 
 cmake_policy(SET CMP0087 NEW)
+cmake_policy(SET CMP0167 OLD)
 
 file(GLOB RESULT ${PROJECT_SOURCE_DIR}/lib/Gui/QCustomPlot/*.txt)
 if(RESULT STREQUAL "" )
@@ -103,7 +104,7 @@ if(USE_MPI)
     add_definitions(-DUSE_MPI)
 endif()
 
-find_package(Boost 1.65.0 REQUIRED
+find_package(Boost 1.75.0 REQUIRED
         COMPONENTS timer chrono thread program_options unit_test_framework date_time filesystem system)
 find_package(XSD REQUIRED)
 # Note: when XercesC is installed with XSD, you might need to provide the full lib path

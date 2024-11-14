@@ -48,18 +48,18 @@ IF(COMPILE_ROS_PLUGIN)
 	add_subdirectory(ROSPlugin)
 ENDIF()
 
-option(COMPILE_RTIKIDQUALISYS_PLUGIN "Setting this parameter to ON will compile the RT-IK-ID Qualisys plugin for CEINMS." OFF)
-IF(COMPILE_RTIKIDQUALISYS_PLUGIN)
-	file(GLOB RESULT ${PROJECT_SOURCE_DIR}/plugin/RTIKIDQualisys/*.txt) #this bit of code if for not erasing thew plugin if we are working on it. otherwise is call git submodules init and erase ther change
+option(COMPILE_INSOLE_PLUGIN "Setting this parameter to ON will compile the insole plugin for CEINMS." OFF)
+IF(COMPILE_INSOLE_PLUGIN)
+	file(GLOB RESULT ${PROJECT_SOURCE_DIR}/plugin/insolePlugin/*.txt) #this bit of code if for not erasing thew plugin if we are working on it. otherwise is call git submodules init and erase ther change
 	if(RESULT STREQUAL "")
 		execute_process(
-			COMMAND git submodule update --init plugin/RTIKIDQualisys
+			COMMAND git submodule update --init --recursive plugin/insolePlugin 
 			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 		)
 	else()
-		message(WARNING "Submodule RTIKIDQualisys not initialized because folder RTIKIDQualisys folder already contains a .txt file (mostly a Cmakelist.txt). Empty the folder if you want it initialize.")
+		message(WARNING "Submodule InsolePlugin not initialized because folder insolePlugin folder already contains a .txt file (mostly a Cmakelist.txt). Empty the folder if you want it initialize.")
 	endif()
-	add_subdirectory(RTIKIDQualisys)
+	add_subdirectory(insolePlugin)
 ENDIF()
 
 option(COMPILE_RTOSIM_PLUGIN "Setting this parameter to ON will compile the RTOSIM plugin for CEINMS." OFF)

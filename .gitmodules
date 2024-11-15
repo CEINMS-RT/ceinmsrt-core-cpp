@@ -9,6 +9,7 @@
 [submodule "plugin/lib/AdsClient"]
 	path = plugin/lib/AdsClient
 	url = https://github.com/ET-BE/AdsClient.git
+	branch = legacy
 	ignore = dirty
 [submodule "plugin/TwincatEMGPlugin"]
 	path = plugin/TwincatEMGPlugin

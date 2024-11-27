@@ -104,7 +104,7 @@ if(USE_MPI)
     add_definitions(-DUSE_MPI)
 endif()
 
-find_package(Boost 1.75.0 REQUIRED
+find_package(Boost 1.65.0 REQUIRED
         COMPONENTS timer chrono thread program_options unit_test_framework date_time filesystem system)
 find_package(XSD REQUIRED)
 # Note: when XercesC is installed with XSD, you might need to provide the full lib path
@@ -204,7 +204,7 @@ add_subdirectory(lib/xmlInput)
 add_subdirectory(lib/NMSmodel)
 add_subdirectory(lib/Producers)
 add_subdirectory(lib/ModelEvaluation)
-add_subdirectory(lib/tools)
+add_subdirectory(lib/Tools)
 
 if(USE_GUI)
     add_subdirectory(lib/Gui)

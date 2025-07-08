@@ -124,14 +124,14 @@ int main(int argc, char** argv)
 	QCoreApplication::addLibraryPath("C:/Users/DurandauGV/Documents/CEINMS/CEINMS-RT/trunk/bin/Win/Release");*/
 
 	QApplication a(argc, argv);
-	QPixmap pixmap("CEINMS-RT_V2.png");
+	QPixmap pixmap("logo-ceinms-rt-white-v.png");
 	QSplashScreen splash(pixmap);
 
 	if (gui)
 	{
 		delete InterThread::readyToStart;
 		InterThread::readyToStart = new boost::barrier(SyncTools::Shared::numberOfThreads + 1);
-		a.setWindowIcon(QIcon("CEINMS-RT_V2_ICON.png"));
+		a.setWindowIcon(QIcon("logo-ceinms-rt-white-v.png"));
 		splash.show();
 	}
 

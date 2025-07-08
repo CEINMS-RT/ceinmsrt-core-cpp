@@ -160,7 +160,7 @@ int main ( int argc, char** argv )
 	QApplication a1 ( argc, argv );
 	a = &a1;
 // 	QPixmap pixmap ( "CEINMS-RT_Calibration_V1.png" );
-	QPixmap pixmap ( "CEINMS-RT_V2.png" );
+	QPixmap pixmap ( "logo-ceinms-rt-white-v.png" );
 	QSplashScreen splash1 ( pixmap );
 	splash = &splash1;
 
@@ -168,7 +168,7 @@ int main ( int argc, char** argv )
 	{
 // 		a1.setWindowIcon ( QIcon ( "CEINMS-RT_Calibration_V2.png" ) );
 
-		a1.setWindowIcon ( QIcon ( "CEINMS-RT_V1.png" ) );
+		a1.setWindowIcon ( QIcon ( "logo-ceinms-rt-white-v.png" ) );
 		splash1.show();
 		a1.processEvents();
 	}

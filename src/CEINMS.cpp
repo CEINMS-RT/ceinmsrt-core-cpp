@@ -438,7 +438,7 @@ void CLIOption(const int& argc, char** argv, std::string& exect, bool& exectFoun
 		// delimiter (usually space) and the last one is the version number. 
 		// The CmdLine object parses the argv array based on the Arg objects
 		// that it contains. 
-		TCLAP::CmdLine cmd("Command description message", ' ', "0.9");
+		TCLAP::CmdLine cmd("Command description message", ' ', "1.1");
 
 		// Define a value argument and add it to the command line.
 		// A value arg defines a flag and a type of value that it expects,

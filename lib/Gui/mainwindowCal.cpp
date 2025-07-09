@@ -18,7 +18,7 @@ MainWindow::MainWindow (const  ExecutionSimulatedAnnealing* executionSimulatedAn
 
 	std::vector<std::string> muscleTemp;
 
-	QIcon icon ( "CEINMS-RT_V1.png" );
+	QIcon icon ( "logo-ceinms-rt-white-v.png" );
 //     icon.addFile(QString::fromUtf8("CEINMS-RT_V1.png"), QSize(), QIcon::Normal, QIcon::Off);
 	this->setWindowIcon ( icon );
 

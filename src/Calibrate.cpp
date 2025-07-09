@@ -160,7 +160,7 @@ int main ( int argc, char** argv )
 	QApplication a1 ( argc, argv );
 	a = &a1;
 // 	QPixmap pixmap ( "CEINMS-RT_Calibration_V1.png" );
-	QPixmap pixmap ( "CEINMS-RT_V2.png" );
+	QPixmap pixmap ( "logo-ceinms-rt-white-v.png" );
 	QSplashScreen splash1 ( pixmap );
 	splash = &splash1;
 
@@ -168,7 +168,7 @@ int main ( int argc, char** argv )
 	{
 // 		a1.setWindowIcon ( QIcon ( "CEINMS-RT_Calibration_V2.png" ) );
 
-		a1.setWindowIcon ( QIcon ( "CEINMS-RT_V1.png" ) );
+		a1.setWindowIcon ( QIcon ( "logo-ceinms-rt-white-v.png" ) );
 		splash1.show();
 		a1.processEvents();
 	}
@@ -458,7 +458,7 @@ void CLIOption ( const int& argc, char** argv, std::string& exect, std::string& 
 		// delimiter (usually space) and the last one is the version number. 
 		// The CmdLine object parses the argv array based on the Arg objects
 		// that it contains. 
-		TCLAP::CmdLine cmd("Command description message", ' ', "0.9");
+		TCLAP::CmdLine cmd("Command description message", ' ', "1.1");
 
 		// Define a value argument and add it to the command line.
 		// A value arg defines a flag and a type of value that it expects,

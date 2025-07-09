@@ -1,4 +1,4 @@
-<img src="CEINMS-RT_V2_ICON.png" width="100%" alt="CEINMS-RT logo">
+<img src="logo-ceinms-rt-white-v.png" width="100%" alt="CEINMS-RT logo">
 
 # Welcome
 

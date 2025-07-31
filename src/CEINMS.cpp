@@ -124,14 +124,14 @@ int main(int argc, char** argv)
 	QCoreApplication::addLibraryPath("C:/Users/DurandauGV/Documents/CEINMS/CEINMS-RT/trunk/bin/Win/Release");*/
 
 	QApplication a(argc, argv);
-	QPixmap pixmap("CEINMS-RT_V2.png");
+	QPixmap pixmap("logo-ceinms-rt-white-v.png");
 	QSplashScreen splash(pixmap);
 
 	if (gui)
 	{
 		delete InterThread::readyToStart;
 		InterThread::readyToStart = new boost::barrier(SyncTools::Shared::numberOfThreads + 1);
-		a.setWindowIcon(QIcon("CEINMS-RT_V2_ICON.png"));
+		a.setWindowIcon(QIcon("logo-ceinms-rt-white-v.png"));
 		splash.show();
 	}
 
@@ -438,7 +438,7 @@ void CLIOption(const int& argc, char** argv, std::string& exect, bool& exectFoun
 		// delimiter (usually space) and the last one is the version number. 
 		// The CmdLine object parses the argv array based on the Arg objects
 		// that it contains. 
-		TCLAP::CmdLine cmd("Command description message", ' ', "0.9");
+		TCLAP::CmdLine cmd("Command description message", ' ', "1.1");
 
 		// Define a value argument and add it to the command line.
 		// A value arg defines a flag and a type of value that it expects,

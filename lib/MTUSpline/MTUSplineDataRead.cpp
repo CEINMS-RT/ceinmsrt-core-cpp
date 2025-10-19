@@ -25,7 +25,7 @@
 // #define PRINT_DOF_LIST
 
 #define PRECISION 6
-#define LENGTH 8048
+#define LENGTH 800000
 /*
 class DimException: public exception
 {

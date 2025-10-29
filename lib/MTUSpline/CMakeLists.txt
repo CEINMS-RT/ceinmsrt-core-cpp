@@ -14,6 +14,8 @@ target_link_libraries(MTUSpline
         Boost::timer
         Boost::system)
 
+target_link_options(MTUSpline PRIVATE "LINKER:SHELL:/F 8388608")
+
 if (USE_OPENSIM)
 
     add_library(MTUSplineToolWrite STATIC

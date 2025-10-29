@@ -228,7 +228,7 @@ endif()
 
 include(Package)
 
-set stack reserved size to ~8MB
+# set stack reserved size to ~8MB
 
 if(MSVC)
     # CMake previously automatically set this value for MSVC builds, but the

@@ -5,7 +5,7 @@ add_library(MTUSpline STATIC
         MTUSplineData.cpp
         MTUSplineDataRead.cpp
         MTUSplineInterface.cpp)
-
+set_property(TARGET MTUSpline PROPERTY STATIC_LIBRARY_OPTIONS "/STACK:8388608")
 target_link_libraries(MTUSpline
         NMSmodel
         XMLExecutionInterpreter
@@ -14,7 +14,12 @@ target_link_libraries(MTUSpline
         Boost::timer
         Boost::system)
 
-target_link_options(MTUSpline PRIVATE "LINKER:SHELL:/F 8388608")
+# set stack reserved size to ~8MB
+if(MSVC)
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /STACK:8388608")
+elseif(MINGW) # FIXME: Also cygwin?
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--stack,8388608")
+endif()
 
 if (USE_OPENSIM)
 

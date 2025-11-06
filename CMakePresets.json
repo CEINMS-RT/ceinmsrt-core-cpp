@@ -1,0 +1,40 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "windows-2019",
+            "displayName": "Visual Studio Community 2019 Release - amd64",
+            "description": "Using compilers for Visual Studio 16 2019 (x64 architecture)",
+            "generator": "Visual Studio 16 2019",
+            "toolset": "host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/bin/Debug",
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "Boost_INCLUDE_DIR": "C:/local/boost_1_75_0",
+                "Boost_LIBRARY_DIR_DEBUG": "C:/local/boost_1_75_0/lib64-msvc-14.2",
+                "Boost_LIBRARY_DIR_RELEASE": "C:/local/boost_1_75_0/lib64-msvc-14.2",
+                "XSD_EXECUTABLE": "C:/Program Files (x86)/CodeSynthesis XSD 4.0/bin/xsd.exe",
+                "XSD_INCLUDE_DIR": "C:/Program Files (x86)/CodeSynthesis XSD 4.0/include",
+                "XercesC_INCLUDE_DIR": "C:/Program Files (x86)/CodeSynthesis XSD 4.0/include/xercesc",
+                "XercesC_LIBRARY_DEBUG": "C:/Program Files (x86)/CodeSynthesis XSD 4.0/lib64/vc-12.0/xerces-c_3D.lib",
+                "XercesC_LIBRARY_RELEASE": "C:/Program Files (x86)/CodeSynthesis XSD 4.0/lib64/vc-12.0/xerces-c_3.lib",
+                "XercesC_VERSION": "3.1.1",
+                "GLEW_INCLUDE_DIR": "C:/glew-2.1.0/include",
+                "GLEW_SHARED_LIBRARY_RELEASE": "C:/glew-2.1.0/lib/Release/x64/glew32.lib",
+                "GLEW_STATIC_LIBRARY_RELEASE": "C:/glew-2.1.0/lib/Release/x64/glew32s.lib",
+                "OpenSim_DIR": "C:/local/opensim-core-4.5.2/cmake"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-2019-debug",
+            "displayName": "Visual Studio Community 2019 Release - amd64 - Debug",
+            "configurePreset": "windows-2019",
+            "configuration": "Debug"
+        }
+    ]
+}

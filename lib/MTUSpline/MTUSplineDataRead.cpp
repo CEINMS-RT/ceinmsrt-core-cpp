@@ -24,7 +24,7 @@
 #include <boost/timer/timer.hpp>
 // #define PRINT_DOF_LIST
 
-constexpr auto Precision = 6;
+constexpr int Precision = 6;
 constexpr int NumberOfChars = 800000;
 /*
 class DimException: public exception

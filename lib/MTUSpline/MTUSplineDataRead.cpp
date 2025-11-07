@@ -24,8 +24,8 @@
 #include <boost/timer/timer.hpp>
 // #define PRINT_DOF_LIST
 
-#define PRECISION 6
-#define LENGTH 800000
+constexpr auto Precision = 6;
+constexpr int NumberOfChars = 800000;
 /*
 class DimException: public exception
 {
@@ -154,12 +154,12 @@ void MTUSplineDataRead::readTaskCoefficients()
 		}
 
 		{
-			char lineChar[LENGTH];
-			fgets(lineChar, LENGTH, inputCoeffFile);
+			char lineChar[NumberOfChars];
+			fgets(lineChar, NumberOfChars, inputCoeffFile);
 		}
 		{
-			char lineChar[LENGTH];
-			fgets(lineChar, LENGTH, inputCoeffFile);
+			char lineChar[NumberOfChars];
+			fgets(lineChar, NumberOfChars, inputCoeffFile);
 			//getline(inputCoeffFile, line, '\n');
 			//getline(inputCoeffFile, line, '\n');
 
@@ -174,36 +174,36 @@ void MTUSplineDataRead::readTaskCoefficients()
 			//std::cout << nbOfDOF << std::endl;
 			//std::cout << noMuscles_ << std::endl;
 
-			char lineChar2[LENGTH];
-			fgets(lineChar2, LENGTH, inputCoeffFile);
+			char lineChar2[NumberOfChars];
+			fgets(lineChar2, NumberOfChars, inputCoeffFile);
 			//getline(inputCoeffFile, line, '\n'); //Blank line
 
 			for (int i = 0; i < nbOfDOF; ++i)
 			{
-				char lineChar3[LENGTH];
-				fgets(lineChar3, LENGTH, inputCoeffFile);
+				char lineChar3[NumberOfChars];
+				fgets(lineChar3, NumberOfChars, inputCoeffFile);
 				string lineb(lineChar3);
 				stringstream myStream(lineb);
 				myStream >> dofName_[i];
-				myStream >> std::fixed >> std::setprecision(PRECISION) >> a_[i];
+				myStream >> std::fixed >> std::setprecision(Precision) >> a_[i];
 				
-				myStream >> std::fixed >> std::setprecision(PRECISION) >> b_[i];
+				myStream >> std::fixed >> std::setprecision(Precision) >> b_[i];
 				myStream >> n_[i];
 				/*inputCoeffFile >> dofName_[i];
-				inputCoeffFile >> std::fixed >> std::setprecision(PRECISION) >> a_[i];
-				inputCoeffFile >> std::fixed >> std::setprecision(PRECISION) >> b_[i];
+				inputCoeffFile >> std::fixed >> std::setprecision(Precision) >> a_[i];
+				inputCoeffFile >> std::fixed >> std::setprecision(Precision) >> b_[i];
 				inputCoeffFile >> n_[i];*/
 				//getline(inputCoeffFile, line, '\n');
 			}
 		}
 
 		{
-			char lineChar[LENGTH];
-			fgets(lineChar, LENGTH, inputCoeffFile);
+			char lineChar[NumberOfChars];
+			fgets(lineChar, NumberOfChars, inputCoeffFile);
 		}
 		{
-			char lineChar[LENGTH];
-			fgets(lineChar, LENGTH, inputCoeffFile);
+			char lineChar[NumberOfChars];
+			fgets(lineChar, NumberOfChars, inputCoeffFile);
 			//getline(inputCoeffFile, line, '\n'); //Blank line
 			//getline(inputCoeffFile, line, '\n'); //Blank line
 
@@ -223,8 +223,8 @@ void MTUSplineDataRead::readTaskCoefficients()
 		}
 
 		{
-			char lineChar[LENGTH];
-			fgets(lineChar, LENGTH, inputCoeffFile);
+			char lineChar[NumberOfChars];
+			fgets(lineChar, NumberOfChars, inputCoeffFile);
 		}
 		//getline(inputCoeffFile, line, '\n'); //Blank line
 
@@ -241,8 +241,8 @@ void MTUSplineDataRead::readTaskCoefficients()
 		for (int i = 0; i < noMuscles_; ++i)
 		{
 			
-			char lineChar[LENGTH];
-			fgets(lineChar, LENGTH, inputCoeffFile);
+			char lineChar[NumberOfChars];
+			fgets(lineChar, NumberOfChars, inputCoeffFile);
 			//getline(inputCoeffFile, line, '\n');
 
 			string line3(lineChar);
@@ -436,8 +436,8 @@ void MTUSplineDataRead::readCoefficients(const string& inputCoeffFilename)
 	for (int i = 0; i < nbOfDOF; ++i)
 	{
 		inputCoeffFile >> dofName_[i];
-		inputCoeffFile >> std::fixed >> std::setprecision(PRECISION) >> a_[i];
-		inputCoeffFile >> std::fixed >> std::setprecision(PRECISION) >> b_[i];
+		inputCoeffFile >> std::fixed >> std::setprecision(Precision) >> a_[i];
+		inputCoeffFile >> std::fixed >> std::setprecision(Precision) >> b_[i];
 		inputCoeffFile >> n_[i];
 		getline(inputCoeffFile, line, '\n');
 	}

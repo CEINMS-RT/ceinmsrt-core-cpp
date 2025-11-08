@@ -5,6 +5,11 @@ if (MSVC)
     set(windows_libs
             ws2_32
             winmm)
+
+    # set stack reserved size to ~8MB
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:8388608")
+elseif(MINGW) # FIXME: Also cygwin?
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack,8388608")
 endif()
 
 target_link_libraries(CEINMS

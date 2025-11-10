@@ -5,7 +5,6 @@ add_library(MTUSpline STATIC
         MTUSplineData.cpp
         MTUSplineDataRead.cpp
         MTUSplineInterface.cpp)
-
 target_link_libraries(MTUSpline
         NMSmodel
         XMLExecutionInterpreter

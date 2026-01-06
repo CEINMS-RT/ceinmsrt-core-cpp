@@ -26,10 +26,10 @@
  *
  */
 
-// #include "OpenSimFileLogger.h"
+// #include "CeinmsFileLogger.h"
 
 template <typename NMSmodelT>
-OpenSimFileLogger<NMSmodelT>::OpenSimFileLogger ( const NMSmodelT& subjectModel, const std::string& recordDirectory ) :
+CeinmsFileLogger<NMSmodelT>::CeinmsFileLogger ( const NMSmodelT& subjectModel, const std::string& recordDirectory ) :
 _subjectModel(subjectModel), _subjectModelGiven(true), _recordDirectory(recordDirectory), _cptMarker(0), _cptMarkerFilter(0), threadStop_(false)
 {
 	// Create the directory for the recorded file
@@ -42,11 +42,11 @@ _subjectModel(subjectModel), _subjectModelGiven(true), _recordDirectory(recordDi
 		if ( !boost::filesystem::create_directories ( dir ) )
 			COUT << "ERROR in creating directory: " << ss.str() << std::endl;
 
-	saveThread_ = new std::thread(&OpenSimFileLogger<NMSmodelT>::threadFunc, this);
+	saveThread_ = new std::thread(&CeinmsFileLogger<NMSmodelT>::threadFunc, this);
 }
 
 template <typename NMSmodelT>
-OpenSimFileLogger<NMSmodelT>::OpenSimFileLogger ( const std::string& recordDirectory ) :
+CeinmsFileLogger<NMSmodelT>::CeinmsFileLogger ( const std::string& recordDirectory ) :
 _subjectModelGiven(false), _recordDirectory(recordDirectory), _cptMarker(0), _cptMarkerFilter(0), _subjectModel(NMSmodelT()), threadStop_(false)
 {
 	// Create the directory for the recorded file
@@ -59,11 +59,11 @@ _subjectModelGiven(false), _recordDirectory(recordDirectory), _cptMarker(0), _cp
 		if ( !boost::filesystem::create_directories ( dir ) )
 			COUT << "ERROR in creating directory: " << ss.str() << std::endl;
 
-	saveThread_ = new std::thread(&OpenSimFileLogger<NMSmodelT>::threadFunc, this);
+	saveThread_ = new std::thread(&CeinmsFileLogger<NMSmodelT>::threadFunc, this);
 }
 
 template <typename NMSmodelT>
-OpenSimFileLogger<NMSmodelT>::~OpenSimFileLogger()
+CeinmsFileLogger<NMSmodelT>::~CeinmsFileLogger()
 {
 
 	for ( std::map<Logger::LogID, std::ofstream*>::iterator it  = _mapLogIDToFile.begin(); it != _mapLogIDToFile.end(); it++ )
@@ -74,7 +74,7 @@ OpenSimFileLogger<NMSmodelT>::~OpenSimFileLogger()
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::threadFunc()
+void CeinmsFileLogger<NMSmodelT>::threadFunc()
 {
 
 	mtxEnd_.lock();
@@ -123,7 +123,7 @@ void OpenSimFileLogger<NMSmodelT>::threadFunc()
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::addLogCSV (std::string filename)
+void CeinmsFileLogger<NMSmodelT>::addLogCSV (std::string filename)
 {
 	using namespace Logger;
 	std::stringstream ss;
@@ -141,7 +141,7 @@ void OpenSimFileLogger<NMSmodelT>::addLogCSV (std::string filename)
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::addLogCSVwithHeader(std::string filename, const std::vector<std::string>& ColumnName)
+void CeinmsFileLogger<NMSmodelT>::addLogCSVwithHeader(std::string filename, const std::vector<std::string>& ColumnName)
 {
 	using namespace Logger;
 	std::stringstream ss;
@@ -176,7 +176,7 @@ void OpenSimFileLogger<NMSmodelT>::addLogCSVwithHeader(std::string filename, con
 
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::addLog ( Logger::LogID logID, const std::vector<std::string>& ColumnName )
+void CeinmsFileLogger<NMSmodelT>::addLog ( Logger::LogID logID, const std::vector<std::string>& ColumnName )
 {
 	using namespace Logger;
 	std::string filename;
@@ -461,7 +461,7 @@ void OpenSimFileLogger<NMSmodelT>::addLog ( Logger::LogID logID, const std::vect
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::addLog ( Logger::LogID logID )
+void CeinmsFileLogger<NMSmodelT>::addLog ( Logger::LogID logID )
 {
 	using namespace Logger;
 	std::string filename;
@@ -512,7 +512,7 @@ void OpenSimFileLogger<NMSmodelT>::addLog ( Logger::LogID logID )
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::markerHearder ( std::ofstream& file, const std::vector<std::string>& ColumnName, const unsigned int& numbersOfFrames )
+void CeinmsFileLogger<NMSmodelT>::markerHearder ( std::ofstream& file, const std::vector<std::string>& ColumnName, const unsigned int& numbersOfFrames )
 {
 	file << "DataRate\tCameraRate\tNumFrames\tNumMarkers\tUnits\tOrigDataRate\tOrigDataStartFrame\tOrigNumFrames" << std::endl;
 	file << "128\t128\t" << numbersOfFrames << "\t" << ColumnName.size() << "\tm\t128\t1\t" << numbersOfFrames << std::endl;
@@ -536,7 +536,7 @@ void OpenSimFileLogger<NMSmodelT>::markerHearder ( std::ofstream& file, const st
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::addMa ( const std::string& maName, const std::vector<std::string>& ColumnName )
+void CeinmsFileLogger<NMSmodelT>::addMa ( const std::string& maName, const std::vector<std::string>& ColumnName )
 {
 	using namespace Logger;
 	std::stringstream ss;
@@ -555,7 +555,7 @@ void OpenSimFileLogger<NMSmodelT>::addMa ( const std::string& maName, const std:
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::logCSV(std::string filename, const double& time, const std::vector<double>& data)
+void CeinmsFileLogger<NMSmodelT>::logCSV(std::string filename, const double& time, const std::vector<double>& data)
 {
 	using namespace Logger;
 	std::ofstream* file = _mapLogIDCSVToFile.at(filename);
@@ -563,7 +563,7 @@ void OpenSimFileLogger<NMSmodelT>::logCSV(std::string filename, const double& ti
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::logCSV(std::string filename, const double& time, const double& data)
+void CeinmsFileLogger<NMSmodelT>::logCSV(std::string filename, const double& time, const double& data)
 {
 	using namespace Logger;
 	std::ofstream* file = _mapLogIDCSVToFile.at(filename);
@@ -573,7 +573,7 @@ void OpenSimFileLogger<NMSmodelT>::logCSV(std::string filename, const double& ti
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time )
+void CeinmsFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time )
 {
 	using namespace Logger;
 	std::ofstream* file = _mapLogIDToFile.at ( logID );
@@ -684,7 +684,7 @@ void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time, const std::vector<double>& data )
+void CeinmsFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time, const std::vector<double>& data )
 {
 	using namespace Logger;
 	std::ofstream* file = _mapLogIDToFile.at ( logID );
@@ -791,7 +791,7 @@ void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time, const double& data )
+void CeinmsFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time, const double& data )
 {
 	using namespace Logger;
 // 	COUT << time << std::endl;
@@ -804,7 +804,7 @@ void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time
 }
 
 // template <typename NMSmodelT>
-// void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time, const std::vector<bool>& data )
+// void CeinmsFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time, const std::vector<bool>& data )
 // {
 // 	using namespace Logger;
 // 	std::ofstream* file = _mapLogIDToFile.at ( logID );
@@ -820,7 +820,7 @@ void OpenSimFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time
 // }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::fillData ( std::ofstream& file, const double& time, const std::vector<double>& data )
+void CeinmsFileLogger<NMSmodelT>::fillData ( std::ofstream& file, const double& time, const std::vector<double>& data )
 {
 	Logger::loggerStruct temp;
 	temp.file = &file;
@@ -832,7 +832,7 @@ void OpenSimFileLogger<NMSmodelT>::fillData ( std::ofstream& file, const double&
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::fillData ( std::ofstream& file, const double& time, const std::vector<bool>& data )
+void CeinmsFileLogger<NMSmodelT>::fillData ( std::ofstream& file, const double& time, const std::vector<bool>& data )
 {
 	file << std::setprecision ( 15 ) << time << "\t";
 
@@ -843,7 +843,7 @@ void OpenSimFileLogger<NMSmodelT>::fillData ( std::ofstream& file, const double&
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::logMa ( const std::vector<std::string>& maNameList, const double& time, const std::vector<std::vector<double> >& data )
+void CeinmsFileLogger<NMSmodelT>::logMa ( const std::vector<std::string>& maNameList, const double& time, const std::vector<std::vector<double> >& data )
 {
 	for ( std::vector<std::string>::const_iterator it = maNameList.begin(); it != maNameList.end(); it++ )
 	{
@@ -853,7 +853,7 @@ void OpenSimFileLogger<NMSmodelT>::logMa ( const std::vector<std::string>& maNam
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::logMa ( const std::string& maName, const double& time, const std::vector<double>& data )
+void CeinmsFileLogger<NMSmodelT>::logMa ( const std::string& maName, const double& time, const std::vector<double>& data )
 {
 	std::ofstream* file = _mapMANametoFile.at ( maName );
 	_mapMANametoNumerOfRow[maName]++;
@@ -861,10 +861,10 @@ void OpenSimFileLogger<NMSmodelT>::logMa ( const std::string& maName, const doub
 }
 
 template <typename NMSmodelT>
-void OpenSimFileLogger<NMSmodelT>::stop()
+void CeinmsFileLogger<NMSmodelT>::stop()
 {
 
-	std::cout << "OpenSimFileLogger<NMSmodelT>::stop() " << this << std::endl;
+	std::cout << "CeinmsFileLogger<NMSmodelT>::stop() " << this << std::endl;
 	using namespace Logger;
 
 	mtxEnd_.lock();

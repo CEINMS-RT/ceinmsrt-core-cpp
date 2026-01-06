@@ -111,11 +111,11 @@ void ModelEvaluationRealTime<NMSmodelT>::operator() ()
 
 
 #ifndef NO_SAVE
-	OpenSimFileLogger<NMSmodelT>* logger;
+	CeinmsFileLogger<NMSmodelT>* logger;
 
 	if (_record) // Initialisation of the logger for recording on file
 	{
-		logger = new OpenSimFileLogger<NMSmodelT>(subject_, _recordDirectory);
+		logger = new CeinmsFileLogger<NMSmodelT>(subject_, _recordDirectory);
 		logger->addLog(Logger::Activations, muscleNames_);
 		logger->addLog(Logger::FibreLengths, muscleNames_);
 		logger->addLog(Logger::FibreVelocities, muscleNames_);

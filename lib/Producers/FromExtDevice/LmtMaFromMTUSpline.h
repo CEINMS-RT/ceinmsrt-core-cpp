@@ -27,7 +27,7 @@
 #include <stddef.h>
 #include <boost/filesystem.hpp>
 #include <iomanip>
-#include "OpenSimFileLogger.h"
+#include "CeinmsFileLogger.h"
 #include "AngleAndComsumerPlugin.h"
 #include "EmgAndAngleAndComsumerPlugin.h"
 #include "ExecutionXmlReader.h"

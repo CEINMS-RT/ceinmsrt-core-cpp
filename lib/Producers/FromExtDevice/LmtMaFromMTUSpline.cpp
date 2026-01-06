@@ -68,11 +68,11 @@ void LmtMaFromMTUSpline::operator() ()
 	getSyncGui(_gui);
 
 #ifndef NO_SAVE
-	OpenSimFileLogger<int>* logger;
+	CeinmsFileLogger<int>* logger;
 
 	if (_record)
 	{
-		logger = new OpenSimFileLogger<int>(_recordDirectory);
+		logger = new CeinmsFileLogger<int>(_recordDirectory);
 		logger->addLog(Logger::MTUTiming);
 	}
 

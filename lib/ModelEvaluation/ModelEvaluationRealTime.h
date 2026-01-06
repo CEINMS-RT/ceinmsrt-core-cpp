@@ -36,7 +36,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/timer/timer.hpp>
 #include <boost/unordered_map.hpp>
-#include "OpenSimFileLogger.h"
+#include "CeinmsFileLogger.h"
 #include "SyncTools.h"
 using std::cout;
 using std::endl;

@@ -27,7 +27,6 @@
 #include "ExternalTorqueFromFile.h"
 // #include "ModelEvaluationOnline.h"
 // #include "ModelEvaluationOffline.h"
-// #include "ModelEvaluationHybrid.h"
 
 #include "SetupDataStructure.h"
 #include "Activation/ExponentialActivation.h"
@@ -36,7 +35,6 @@
 #include "Tendon/ElasticTendon.h"
 #include "Tendon/ElasticTendon_BiSec.h"
 // #include "ErrorMinimizerAnnealing.h"
-// #include "HybridWeightings.h"
 #include "Curve.h"
 #include "ExecutionXmlReader.h"
 #include "DynLib.h"
@@ -62,12 +60,6 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-
-/**
- * TODO: add Hybrid model
- * 		Joint Compression
- *
- */
 
 void CEINMSSigintHandler(int sig);
 void timerToEndCEINMS(double timer);

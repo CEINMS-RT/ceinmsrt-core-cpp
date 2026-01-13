@@ -215,22 +215,6 @@ void NMSmodel<Activation, Tendon, mode>::updateState(const vector<unsigned>& sel
 //
 
 template <typename Activation, typename Tendon, CurveMode::Mode mode>
-void NMSmodel<Activation, Tendon, mode>::updateState_HYBRID() {
-	updateActivations();
-	updateFibreLengthsAndVelocities_HYBRID();
-	updateMuscleForces();
-	updateTorques();
-}
-
-template <typename Activation, typename Tendon, CurveMode::Mode mode>
-void NMSmodel<Activation, Tendon, mode>::updateState_HYBRID(const vector<unsigned>& selectedmusclesIndex) {
-	updateActivations(selectedmusclesIndex);
-	updateFibreLengthsAndVelocities_HYBRID(selectedmusclesIndex);
-	updateMuscleForces(selectedmusclesIndex);
-	updateTorques();
-}
-
-template <typename Activation, typename Tendon, CurveMode::Mode mode>
 void NMSmodel<Activation, Tendon, mode>::updateActivations() {
 	vectorMTUitr muscleIt = muscles_.begin();
 	for (muscleIt; muscleIt != muscles_.end(); ++muscleIt)
@@ -288,24 +272,6 @@ void NMSmodel<Activation, Tendon, mode>::updateFibreLengthsAndVelocities(const v
 //         muscleIt->updateFibreLengthAndVelocity();
 //     }
 // }
-
-template <typename Activation, typename Tendon, CurveMode::Mode mode>
-void NMSmodel<Activation, Tendon, mode>::updateFibreLengthsAndVelocities_HYBRID() {
-	vectorMTUitr muscleIt = muscles_.begin();
-	//std::cout << "ok" << std::endl << std::flush;
-	for (muscleIt; muscleIt != muscles_.end(); ++muscleIt)
-		muscleIt->updateFibreLengthAndVelocity_HYBRID();
-}
-
-template <typename Activation, typename Tendon, CurveMode::Mode mode>
-void NMSmodel<Activation, Tendon, mode>::updateFibreLengthsAndVelocities_HYBRID(const vector<unsigned>& selectedMusclesIndex) {
-	vectorMTUitr muscleIt;
-	vector<unsigned>::const_iterator it = selectedMusclesIndex.begin();
-	for (it; it != selectedMusclesIndex.end(); ++it) {
-		muscleIt = muscles_.begin() + *it;
-		muscleIt->updateFibreLengthAndVelocity_HYBRID();
-	}
-}
 
 template <typename Activation, typename Tendon, CurveMode::Mode mode>
 void NMSmodel<Activation, Tendon, mode>::updateFibreLengths_OFFLINEPREP() {

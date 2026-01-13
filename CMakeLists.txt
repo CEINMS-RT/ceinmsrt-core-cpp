@@ -130,7 +130,6 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/lib/Calibration/SimAnnealParameters
     ${CMAKE_SOURCE_DIR}/lib/Calibration/ObjectiveFunctions
     ${CMAKE_SOURCE_DIR}/lib/Calibration/TorqueComputationModes
-    ${CMAKE_SOURCE_DIR}/lib/Hybrid
     ${CMAKE_SOURCE_DIR}/lib/MTUSpline
     ${CMAKE_SOURCE_DIR}/lib/ModelEvaluation
     ${CMAKE_SOURCE_DIR}/lib/Gui

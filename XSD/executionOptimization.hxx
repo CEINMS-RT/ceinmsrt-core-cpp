@@ -229,7 +229,6 @@ class LMElementType;
 class SimplexElementType;
 class AlgorithmType;
 class MuscleInTheLoopType;
-class HybridOptimizationType;
 class OnlineCalibrationType;
 class MuscleParameterType;
 class OptimizationType;
@@ -826,164 +825,6 @@ protected:
     ::xsd::cxx::tree::one< nCyclesOptimization_type > nCyclesOptimization_;
 };
 
-class HybridOptimizationType : public ::xml_schema::type
-{
-public:
-    // alpha
-    //
-    typedef ::xml_schema::double_ alpha_type;
-    typedef ::xsd::cxx::tree::traits< alpha_type, char, ::xsd::cxx::tree::schema_type::double_ > alpha_traits;
-
-    const alpha_type&
-        alpha() const;
-
-    alpha_type&
-        alpha();
-
-    void
-        alpha(const alpha_type& x);
-
-    // beta
-    //
-    typedef ::xml_schema::double_ beta_type;
-    typedef ::xsd::cxx::tree::traits< beta_type, char, ::xsd::cxx::tree::schema_type::double_ > beta_traits;
-
-    const beta_type&
-        beta() const;
-
-    beta_type&
-        beta();
-
-    void
-        beta(const beta_type& x);
-
-    // gamma
-    //
-    typedef ::xml_schema::double_ gamma_type;
-    typedef ::xsd::cxx::tree::traits< gamma_type, char, ::xsd::cxx::tree::schema_type::double_ > gamma_traits;
-
-    const gamma_type&
-        gamma() const;
-
-    gamma_type&
-        gamma();
-
-    void
-        gamma(const gamma_type& x);
-
-    // trackedMuscles
-    //
-    typedef ::MuscleListOptimizationType trackedMuscles_type;
-    typedef ::xsd::cxx::tree::traits< trackedMuscles_type, char > trackedMuscles_traits;
-
-    const trackedMuscles_type&
-        trackedMuscles() const;
-
-    trackedMuscles_type&
-        trackedMuscles();
-
-    void
-        trackedMuscles(const trackedMuscles_type& x);
-
-    void
-        trackedMuscles(::std::auto_ptr< trackedMuscles_type > p);
-
-    // predictedMuscles
-    //
-    typedef ::MuscleListOptimizationType predictedMuscles_type;
-    typedef ::xsd::cxx::tree::traits< predictedMuscles_type, char > predictedMuscles_traits;
-
-    const predictedMuscles_type&
-        predictedMuscles() const;
-
-    predictedMuscles_type&
-        predictedMuscles();
-
-    void
-        predictedMuscles(const predictedMuscles_type& x);
-
-    void
-        predictedMuscles(::std::auto_ptr< predictedMuscles_type > p);
-
-    // DOFsOptimized
-    //
-    typedef ::MuscleListOptimizationType DOFsOptimized_type;
-    typedef ::xsd::cxx::tree::traits< DOFsOptimized_type, char > DOFsOptimized_traits;
-
-    const DOFsOptimized_type&
-        DOFsOptimized() const;
-
-    DOFsOptimized_type&
-        DOFsOptimized();
-
-    void
-        DOFsOptimized(const DOFsOptimized_type& x);
-
-    void
-        DOFsOptimized(::std::auto_ptr< DOFsOptimized_type > p);
-
-    // performanceCriterion
-    //
-    typedef ::xml_schema::string performanceCriterion_type;
-    typedef ::xsd::cxx::tree::traits< performanceCriterion_type, char > performanceCriterion_traits;
-
-    const performanceCriterion_type&
-        performanceCriterion() const;
-
-    performanceCriterion_type&
-        performanceCriterion();
-
-    void
-        performanceCriterion(const performanceCriterion_type& x);
-
-    void
-        performanceCriterion(::std::auto_ptr< performanceCriterion_type > p);
-
-    // Constructors.
-    //
-    HybridOptimizationType(const alpha_type&,
-        const beta_type&,
-        const gamma_type&,
-        const trackedMuscles_type&,
-        const predictedMuscles_type&,
-        const DOFsOptimized_type&,
-        const performanceCriterion_type&);
-
-    HybridOptimizationType(const ::xercesc::DOMElement& e,
-        ::xml_schema::flags f = 0,
-        ::xml_schema::container* c = 0);
-
-    HybridOptimizationType(const HybridOptimizationType& x,
-        ::xml_schema::flags f = 0,
-        ::xml_schema::container* c = 0);
-
-    virtual HybridOptimizationType*
-        _clone(::xml_schema::flags f = 0,
-            ::xml_schema::container* c = 0) const;
-
-    HybridOptimizationType&
-        operator= (const HybridOptimizationType& x);
-
-    virtual
-        ~HybridOptimizationType();
-
-    // Implementation.
-    //
-protected:
-    void
-        parse(::xsd::cxx::xml::dom::parser< char >&,
-            ::xml_schema::flags);
-
-protected:
-    ::xsd::cxx::tree::one< alpha_type > alpha_;
-    ::xsd::cxx::tree::one< beta_type > beta_;
-    ::xsd::cxx::tree::one< gamma_type > gamma_;
-    ::xsd::cxx::tree::one< trackedMuscles_type > trackedMuscles_;
-    ::xsd::cxx::tree::one< predictedMuscles_type > predictedMuscles_;
-    ::xsd::cxx::tree::one< DOFsOptimized_type > DOFsOptimized_;
-    ::xsd::cxx::tree::one< performanceCriterion_type > performanceCriterion_;
-};
-
 class OnlineCalibrationType : public ::xml_schema::type
 {
 public:
@@ -1252,27 +1093,6 @@ public:
     void
         MuscleInTheLoop(::std::auto_ptr< MuscleInTheLoop_type > p);
 
-    // Hybrid
-    //
-    typedef ::HybridOptimizationType Hybrid_type;
-    typedef ::xsd::cxx::tree::optional< Hybrid_type > Hybrid_optional;
-    typedef ::xsd::cxx::tree::traits< Hybrid_type, char > Hybrid_traits;
-
-    const Hybrid_optional&
-        Hybrid() const;
-
-    Hybrid_optional&
-        Hybrid();
-
-    void
-        Hybrid(const Hybrid_type& x);
-
-    void
-        Hybrid(const Hybrid_optional& x);
-
-    void
-        Hybrid(::std::auto_ptr< Hybrid_type > p);
-
     // OnlineCalibration
     //
     typedef ::OnlineCalibrationType OnlineCalibration_type;
@@ -1349,7 +1169,6 @@ protected:
 protected:
     ::xsd::cxx::tree::one< Algorithm_type > Algorithm_;
     MuscleInTheLoop_optional MuscleInTheLoop_;
-    Hybrid_optional Hybrid_;
     OnlineCalibration_optional OnlineCalibration_;
     MuscleParameter_optional MuscleParameter_;
 };

@@ -291,24 +291,6 @@ void MTU<Activation, Tendon, CurveM>::updateFibreLength_OFFLINEPREP()
 	updateFibreLength();
 }
 
-template<typename Activation, typename Tendon, typename CurveM>
-void MTU<Activation, Tendon, CurveM>::updateFibreLengthAndVelocity_HYBRID()
-{
-	
-	//updateFibreLength();
-	fibreLengthTrace_.removeLastPointNoUpdate();
-	tendonDynamic_.updateFibreLength();
-	double tendonLength = tendonDynamic_.getTendonLength();
-	tendonStrain_ = ((tendonLength - tendonSlackLength_) / tendonSlackLength_);
-	fibreLength_ = tendonDynamic_.getFibreLength();
-	fibreLengthTrace_.addPointOnly ( time_, fibreLength_ );
-
-	//std::cout << "fibreLength_ " << time_ << " ; " << fibreLength_ << std::endl << std::flush;
-	fibreLengthTrace_.refresh();
-	updateFibreVelocity();
-}
-
-
 
 template<typename Activation, typename Tendon, typename CurveM>
 void MTU<Activation, Tendon, CurveM>::updateMuscleForce()

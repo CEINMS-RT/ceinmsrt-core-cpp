@@ -42,8 +42,6 @@ class NMSModelBase{
 
     virtual void updateState() = 0;
     virtual void updateState(const std::vector<unsigned>& selectedMusclesIndex) = 0;
-    virtual void updateState_HYBRID() = 0;
-    virtual void updateState_HYBRID(const std::vector<unsigned>& selectedMusclesIndex) = 0;
 
     virtual void pushState() = 0;
     virtual void pushState(const std::vector<unsigned>& selectedMusclesIndex) = 0;
@@ -139,14 +137,10 @@ public:
     void setMomentArms(const std::vector<double>& currentMaData, unsigned whichDof);
     void updateState();
     void updateState(const std::vector<unsigned>& selectedMusclesIndex);
-    void updateState_HYBRID();
-    void updateState_HYBRID(const std::vector<unsigned>& selectedMusclesIndex);
     void updateActivations();
     void updateActivations(const std::vector<unsigned>& selectedMusclesIndex);
     void updateFibreLengthsAndVelocities();
     void updateFibreLengthsAndVelocities(const std::vector<unsigned>& selectedMusclesIndex);
-    void updateFibreLengthsAndVelocities_HYBRID();
-    void updateFibreLengthsAndVelocities_HYBRID(const std::vector<unsigned>& selectedMusclesIndex);
     void updateFibreLengths_OFFLINEPREP();
     void updateFibreLengths_OFFLINEPREP(const std::vector<unsigned>& selectedMusclesIndex);
     void updateMuscleForces();

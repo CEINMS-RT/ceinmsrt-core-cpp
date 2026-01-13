@@ -66,7 +66,6 @@ public:
     void   setMuscleTendonLength(double muscleTendonLength); 
     void   updateActivation();
     void   updateFibreLengthAndVelocity();  
-    void   updateFibreLengthAndVelocity_HYBRID();
     void   updateFibreLength_OFFLINEPREP();
     void   updateMuscleForce();
     void   pushState();

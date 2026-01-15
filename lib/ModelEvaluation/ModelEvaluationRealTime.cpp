@@ -128,7 +128,6 @@ void ModelEvaluationRealTime<NMSmodelT>::operator() ()
 		logger->addLog(Logger::MusclePassiveForces, muscleNames_);
 		logger->addLog(Logger::MuscleActiveForces, muscleNames_);
 		logger->addLog(Logger::TendonStrain, muscleNames_);
-		logger->addLog(Logger::NMSTiming);
 		logger->addLog(Logger::TotalTiming);
 		logger->addLog(Logger::Emgs, muscleNames_);
 	}
@@ -415,7 +414,6 @@ void ModelEvaluationRealTime<NMSmodelT>::operator() ()
 						logger->log(Logger::Torques, lmtMaTime);
 						// logger->log(Logger::TorquesFilt, lmtMaTime);  // do not use anymore
 						logger->log(Logger::LMT, lmtMaTime);
-						logger->log(Logger::NMSTiming, lmtMaTime, timing);
 						logger->log(Logger::FibreLengths, lmtMaTime);
 						logger->log(Logger::FibreVelocities, lmtMaTime);
 						logger->log(Logger::PennationAngle, lmtMaTime);

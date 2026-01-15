@@ -74,7 +74,6 @@ namespace Logger
 		ForcePlateFilter,
 		IK,
 		ID,
-		NMSTiming,
 		TotalTiming,
 		IKTiming,
 		MTUTiming,

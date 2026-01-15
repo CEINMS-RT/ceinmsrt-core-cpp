@@ -304,12 +304,8 @@ void CeinmsFileLogger<NMSmodelT>::addLog ( Logger::LogID logID, const std::vecto
 			_mapLogIDToNumerOfRow[GroupMusclesBasedOnStrengthCoefficients] = 0;
 			break;
 
-		case NMSTiming:
-			filename = "/NMSTimming.csv";
-			break;
-
 		case TotalTiming:
-			filename = "/TotalTimming.csv";
+			filename = "/TotalTiming.csv";
 			break;
 
 		case IKTiming:
@@ -469,12 +465,8 @@ void CeinmsFileLogger<NMSmodelT>::addLog ( Logger::LogID logID )
 
 	switch ( logID )
 	{
-		case NMSTiming:
-			filename = "/NMSTimming.csv";
-			break;
-
 		case TotalTiming:
-			filename = "/TotalTimming.csv";
+			filename = "/TotalTiming.csv";
 			break;
 
 		case IKTiming:
@@ -797,7 +789,7 @@ void CeinmsFileLogger<NMSmodelT>::log ( Logger::LogID logID, const double& time,
 // 	COUT << time << std::endl;
 	std::ofstream* file = _mapLogIDToFile.at ( logID );
 
-	if (logID != NMSTiming && logID != TotalTiming && logID != IKTiming && logID != MTUTiming && logID != RandomSignal && logID != Error && logID != OptimizationParameter)
+	if (logID != TotalTiming && logID != IKTiming && logID != MTUTiming && logID != RandomSignal && logID != Error && logID != OptimizationParameter)
 		_mapLogIDToNumerOfRow[logID]++;
 
 	*file << std::setprecision ( 15 ) << time << "\t" << data << std::endl;
@@ -876,7 +868,7 @@ void CeinmsFileLogger<NMSmodelT>::stop()
 
 	for ( std::map<Logger::LogID, std::ofstream* >::iterator it = _mapLogIDToFile.begin(); it != _mapLogIDToFile.end(); it++ )
 	{
-		if (it->first != NMSTiming && it->first != TotalTiming && it->first != IKTiming && it->first != MTUTiming && it->first != RandomSignal && it->first != Error && it->first != OptimizationParameter)
+		if (it->first != TotalTiming && it->first != IKTiming && it->first != MTUTiming && it->first != RandomSignal && it->first != Error && it->first != OptimizationParameter)
 		{
 			std::string header;
 			std::stringstream ss, ssCopy;

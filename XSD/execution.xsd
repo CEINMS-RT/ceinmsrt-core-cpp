@@ -18,37 +18,10 @@
       <xs:element name="piecewise" type="ActivationElementType"/>
     </xs:choice>
   </xs:complexType>
-  <xs:complexType name="HybridAlgorithmSimulatedAnnealingType">
-    <xs:sequence>
-      <xs:element name="noEpsilon" type="xs:int"/>
-      <xs:element name="rt" type="xs:double"/>
-      <xs:element name="T" type="xs:double"/>
-      <xs:element name="NS" type="xs:int"/>
-      <xs:element name="NT" type="xs:int"/>
-      <xs:element name="epsilon" type="xs:double"/>
-      <xs:element name="maxNoEval" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="HybridAlgorithmType">
-    <xs:choice>
-      <xs:element name="hybridSimulatedAnnealing" type="HybridAlgorithmSimulatedAnnealingType"/>
-    </xs:choice>
-  </xs:complexType>
   <xs:complexType name="OpenLoopType"/>
   <xs:simpleType name="MuscleListType">
     <xs:list itemType="xs:string"/>
   </xs:simpleType>
-  <xs:complexType name="HybridType">
-    <xs:sequence>
-      <xs:element name="alpha" type="xs:double"/>
-      <xs:element name="beta" type="xs:double"/>
-      <xs:element name="gamma" type="xs:double"/>
-      <xs:element name="trackedMuscles" type="MuscleListType"/>
-      <xs:element name="predictedMuscles" type="MuscleListType"/>
-      <xs:element name="algorithm" type="HybridAlgorithmType"/>
-    </xs:sequence>
-  </xs:complexType>
-  
   <xs:complexType name="DevicePluginType">
     <xs:sequence>
       <xs:element name="EMGDevice" type="xs:string" minOccurs= "0"/>
@@ -72,7 +45,6 @@
   	<xs:sequence>
 		<xs:choice>
 		  <xs:element name="openLoop" type="OpenLoopType"/>
-		  <xs:element name="hybrid" type="HybridType"/>
 		</xs:choice>
   	</xs:sequence>
   </xs:complexType>
@@ -89,7 +61,6 @@
   <xs:complexType name="TypeType">
     <xs:choice>
       <xs:element name="openLoop" type="OpenLoopType"/>
-      <xs:element name="hybrid" type="HybridType"/>
       <xs:element name="realTime" type="RealTimeType"/>
     </xs:choice>
   </xs:complexType>

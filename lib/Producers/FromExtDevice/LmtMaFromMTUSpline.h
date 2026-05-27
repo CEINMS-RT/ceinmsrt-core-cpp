@@ -1,20 +1,14 @@
-// $Id$
-/**
- * @file LmtMaFromMTUSpline.h
- * 
- * @class LmtMaFromMTUSpline
- *
- * @brief Get DOF position, DOF torque and compute the Lmt and MA using Bspline
- * 
- * @details See Sartori, Massimo, et al. "Estimation of musculotendon kinematics in large musculoskeletal models using multidimensional B-splines." Journal of biomechanics 45.3 (2012): 595-601.
- *
- * @author Guillaume Durandau guillaume.durandau@bccn.uni-goettingen.de
- * 
- * @version 1.00
- * 
- * @date Feb 24, 2015
- */
-// $Log$
+// This source code is part of:
+//
+// "CEINMS-RT: an open-source framework for the continuous neuro-mechanical model-based control of wearable robots".
+// Copyright (C) 2024 Massimo Sartori, Mohamed Irfan Refai, Lucas Avanci Gaudio, Christopher Pablo Cop, Donatella Simonetti, Federica Damonte, David G. Lloyd, Claudio Pizzolato, Guillaume Durandau.
+//
+// CEINMS-RT is an open source software. Any changes to this code, should be shared back in the open repository: https://github.com/CEINMS-RT. See license as described here: https://github.com/CEINMS-RT/ceinmsrt-core-cpp/blob/main/LICENSE.
+//
+// The methodologies and ideas implemented in this code are described in the manuscripts below, which should be cited in all publications making use of this code:
+//
+// Massimo Sartori, Mohamed Irfan Refai, Lucas Avanci Gaudio, Christopher Pablo Cop, Donatella Simonetti, Federica Damonte, David G. Lloyd, Claudio Pizzolato, Guillaume Durandau., (2024) "CEINMS-RT: an open-source framework for the continuous neuro-mechanical model-based control of wearable robots. TechRxiv. DOI: 10.36227/techrxiv.173397962.28177284/v1"
+//
 
 #ifndef LMTMAFROMMTUSPLINE_H_
 #define LMTMAFROMMTUSPLINE_H_
@@ -33,7 +27,7 @@
 #include <stddef.h>
 #include <boost/filesystem.hpp>
 #include <iomanip>
-#include "OpenSimFileLogger.h"
+#include "CeinmsFileLogger.h"
 #include "AngleAndComsumerPlugin.h"
 #include "EmgAndAngleAndComsumerPlugin.h"
 #include "ExecutionXmlReader.h"

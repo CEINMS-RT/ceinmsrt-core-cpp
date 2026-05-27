@@ -1,0 +1,20 @@
+# https://docs.docker.com/compose/compose-file/compose-file-v3/
+# The yaml file uses the .env file in the same folder
+# Run specific service using
+# docker compose -f docker-compose-dev.yaml run {service_name}
+# Run all services using
+# docker compose -f docker-compose-dev.yaml up
+
+services:
+    ceinms_rt:
+        image: "ceinms_rt"
+        build:
+            context: ./
+            dockerfile: dockerfile
+            # args:
+        # network_mode: host
+        tty: true # -t flag
+        stdin_open: true # -i flag
+        volumes:
+            - ..:/workspace:cached # mount .. in container workspace folder
+        # cpus: "10.0"

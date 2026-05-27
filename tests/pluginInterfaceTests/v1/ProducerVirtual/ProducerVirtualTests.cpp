@@ -103,7 +103,7 @@ BOOST_AUTO_TEST_CASE(EMGAndAngleProducers)
 
 
     for (const auto & fileName : fs::directory_iterator(expectedResultsFolder)){
-        if(fileName.path().filename().string() == "MTUTiming.csv" || fileName.path().filename().string() == "NMSTimming.csv" || fileName.path().filename().string() == "TotalTimming.csv")
+        if(fileName.path().filename().string() == "MTUTiming.csv" || fileName.path().filename().string() == "TotalTiming.csv")
             continue; 
 
         std::string refFile = expectedResultsFolder + "/" + fileName.path().filename().string();

@@ -4,17 +4,6 @@ project(CEINMS)
 cmake_policy(SET CMP0087 NEW)
 cmake_policy(SET CMP0167 OLD)
 
-file(GLOB RESULT ${PROJECT_SOURCE_DIR}/lib/Gui/QCustomPlot/*.txt)
-if(RESULT STREQUAL "" )
-message("Collecting QCustomPlot. Please wait.")
-execute_process(
-    COMMAND git submodule update --init lib/Gui/QCustomPlot
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-else()
-message("QCustomPlot already cloned. Delete it to re-download.")
-endif()
-
 file(GLOB RESULT ${PROJECT_SOURCE_DIR}/lib/tclap/*.txt)
 if(RESULT STREQUAL "")
 message("Collecting tclap. Please wait.")
@@ -39,6 +28,20 @@ option(SWIG_PYTHON "Compile with Swig for Python" OFF)
 option(SWIG_JAVA "Compile with Swig for Java" OFF)
 option(COMPILE_PLUGIN "Setting this parameter to ON will give the possibility to compile the plugins for CEINMS" OFF)
 option(VERBOSE "Compile with extra program output" ON)
+option(TIMING "Measure execution times" OFF)
+
+if (USE_GUI)
+    file(GLOB RESULT ${PROJECT_SOURCE_DIR}/lib/Gui/QCustomPlot/*.txt)
+    if(RESULT STREQUAL "" )
+    message("Collecting QCustomPlot. Please wait.")
+    execute_process(
+        COMMAND git submodule update --init lib/Gui/QCustomPlot
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+    else()
+    message("QCustomPlot already cloned. Delete it to re-download.")
+    endif()
+endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -130,7 +133,6 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/lib/Calibration/SimAnnealParameters
     ${CMAKE_SOURCE_DIR}/lib/Calibration/ObjectiveFunctions
     ${CMAKE_SOURCE_DIR}/lib/Calibration/TorqueComputationModes
-    ${CMAKE_SOURCE_DIR}/lib/Hybrid
     ${CMAKE_SOURCE_DIR}/lib/MTUSpline
     ${CMAKE_SOURCE_DIR}/lib/ModelEvaluation
     ${CMAKE_SOURCE_DIR}/lib/Gui

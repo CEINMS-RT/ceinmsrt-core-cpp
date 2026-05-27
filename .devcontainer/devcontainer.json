@@ -1,0 +1,13 @@
+{
+    "name":"CEINMS-RT",
+    "dockerComposeFile": ["../docker/docker-compose.yaml"],
+	"service": "ceinms_rt",
+    "workspaceFolder": "/workspace",
+	"shutdownAction": "stopCompose",
+	 "customizations": {
+		"vscode": {
+			"extensions": [] 
+		}
+	}
+}
+ 

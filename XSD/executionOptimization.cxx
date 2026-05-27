@@ -510,160 +510,6 @@ nCyclesOptimization(const nCyclesOptimization_type& x)
 }
 
 
-// HybridOptimizationType
-// 
-
-const HybridOptimizationType::alpha_type& HybridOptimizationType::
-alpha() const
-{
-    return this->alpha_.get();
-}
-
-HybridOptimizationType::alpha_type& HybridOptimizationType::
-alpha()
-{
-    return this->alpha_.get();
-}
-
-void HybridOptimizationType::
-alpha(const alpha_type& x)
-{
-    this->alpha_.set(x);
-}
-
-const HybridOptimizationType::beta_type& HybridOptimizationType::
-beta() const
-{
-    return this->beta_.get();
-}
-
-HybridOptimizationType::beta_type& HybridOptimizationType::
-beta()
-{
-    return this->beta_.get();
-}
-
-void HybridOptimizationType::
-beta(const beta_type& x)
-{
-    this->beta_.set(x);
-}
-
-const HybridOptimizationType::gamma_type& HybridOptimizationType::
-gamma() const
-{
-    return this->gamma_.get();
-}
-
-HybridOptimizationType::gamma_type& HybridOptimizationType::
-gamma()
-{
-    return this->gamma_.get();
-}
-
-void HybridOptimizationType::
-gamma(const gamma_type& x)
-{
-    this->gamma_.set(x);
-}
-
-const HybridOptimizationType::trackedMuscles_type& HybridOptimizationType::
-trackedMuscles() const
-{
-    return this->trackedMuscles_.get();
-}
-
-HybridOptimizationType::trackedMuscles_type& HybridOptimizationType::
-trackedMuscles()
-{
-    return this->trackedMuscles_.get();
-}
-
-void HybridOptimizationType::
-trackedMuscles(const trackedMuscles_type& x)
-{
-    this->trackedMuscles_.set(x);
-}
-
-void HybridOptimizationType::
-trackedMuscles(::std::auto_ptr< trackedMuscles_type > x)
-{
-    this->trackedMuscles_.set(x);
-}
-
-const HybridOptimizationType::predictedMuscles_type& HybridOptimizationType::
-predictedMuscles() const
-{
-    return this->predictedMuscles_.get();
-}
-
-HybridOptimizationType::predictedMuscles_type& HybridOptimizationType::
-predictedMuscles()
-{
-    return this->predictedMuscles_.get();
-}
-
-void HybridOptimizationType::
-predictedMuscles(const predictedMuscles_type& x)
-{
-    this->predictedMuscles_.set(x);
-}
-
-void HybridOptimizationType::
-predictedMuscles(::std::auto_ptr< predictedMuscles_type > x)
-{
-    this->predictedMuscles_.set(x);
-}
-
-const HybridOptimizationType::DOFsOptimized_type& HybridOptimizationType::
-DOFsOptimized() const
-{
-    return this->DOFsOptimized_.get();
-}
-
-HybridOptimizationType::DOFsOptimized_type& HybridOptimizationType::
-DOFsOptimized()
-{
-    return this->DOFsOptimized_.get();
-}
-
-void HybridOptimizationType::
-DOFsOptimized(const DOFsOptimized_type& x)
-{
-    this->DOFsOptimized_.set(x);
-}
-
-void HybridOptimizationType::
-DOFsOptimized(::std::auto_ptr< DOFsOptimized_type > x)
-{
-    this->DOFsOptimized_.set(x);
-}
-
-const HybridOptimizationType::performanceCriterion_type& HybridOptimizationType::
-performanceCriterion() const
-{
-    return this->performanceCriterion_.get();
-}
-
-HybridOptimizationType::performanceCriterion_type& HybridOptimizationType::
-performanceCriterion()
-{
-    return this->performanceCriterion_.get();
-}
-
-void HybridOptimizationType::
-performanceCriterion(const performanceCriterion_type& x)
-{
-    this->performanceCriterion_.set(x);
-}
-
-void HybridOptimizationType::
-performanceCriterion(::std::auto_ptr< performanceCriterion_type > x)
-{
-    this->performanceCriterion_.set(x);
-}
-
-
 // OnlineCalibrationType
 // 
 
@@ -919,36 +765,6 @@ void OptimizationType::
 MuscleInTheLoop(::std::auto_ptr< MuscleInTheLoop_type > x)
 {
     this->MuscleInTheLoop_.set(x);
-}
-
-const OptimizationType::Hybrid_optional& OptimizationType::
-Hybrid() const
-{
-    return this->Hybrid_;
-}
-
-OptimizationType::Hybrid_optional& OptimizationType::
-Hybrid()
-{
-    return this->Hybrid_;
-}
-
-void OptimizationType::
-Hybrid(const Hybrid_type& x)
-{
-    this->Hybrid_.set(x);
-}
-
-void OptimizationType::
-Hybrid(const Hybrid_optional& x)
-{
-    this->Hybrid_ = x;
-}
-
-void OptimizationType::
-Hybrid(::std::auto_ptr< Hybrid_type > x)
-{
-    this->Hybrid_.set(x);
 }
 
 const OptimizationType::OnlineCalibration_optional& OptimizationType::
@@ -1841,245 +1657,6 @@ MuscleInTheLoopType::
 {
 }
 
-// HybridOptimizationType
-//
-
-HybridOptimizationType::
-HybridOptimizationType(const alpha_type& alpha,
-    const beta_type& beta,
-    const gamma_type& gamma,
-    const trackedMuscles_type& trackedMuscles,
-    const predictedMuscles_type& predictedMuscles,
-    const DOFsOptimized_type& DOFsOptimized,
-    const performanceCriterion_type& performanceCriterion)
-    : ::xml_schema::type(),
-    alpha_(alpha, this),
-    beta_(beta, this),
-    gamma_(gamma, this),
-    trackedMuscles_(trackedMuscles, this),
-    predictedMuscles_(predictedMuscles, this),
-    DOFsOptimized_(DOFsOptimized, this),
-    performanceCriterion_(performanceCriterion, this)
-{
-}
-
-HybridOptimizationType::
-HybridOptimizationType(const HybridOptimizationType& x,
-    ::xml_schema::flags f,
-    ::xml_schema::container* c)
-    : ::xml_schema::type(x, f, c),
-    alpha_(x.alpha_, f, this),
-    beta_(x.beta_, f, this),
-    gamma_(x.gamma_, f, this),
-    trackedMuscles_(x.trackedMuscles_, f, this),
-    predictedMuscles_(x.predictedMuscles_, f, this),
-    DOFsOptimized_(x.DOFsOptimized_, f, this),
-    performanceCriterion_(x.performanceCriterion_, f, this)
-{
-}
-
-HybridOptimizationType::
-HybridOptimizationType(const ::xercesc::DOMElement& e,
-    ::xml_schema::flags f,
-    ::xml_schema::container* c)
-    : ::xml_schema::type(e, f | ::xml_schema::flags::base, c),
-    alpha_(this),
-    beta_(this),
-    gamma_(this),
-    trackedMuscles_(this),
-    predictedMuscles_(this),
-    DOFsOptimized_(this),
-    performanceCriterion_(this)
-{
-    if ((f & ::xml_schema::flags::base) == 0)
-    {
-        ::xsd::cxx::xml::dom::parser< char > p(e, true, false, false);
-        this->parse(p, f);
-    }
-}
-
-void HybridOptimizationType::
-parse(::xsd::cxx::xml::dom::parser< char >& p,
-    ::xml_schema::flags f)
-{
-    for (; p.more_content(); p.next_content(false))
-    {
-        const ::xercesc::DOMElement& i(p.cur_element());
-        const ::xsd::cxx::xml::qualified_name< char > n(
-            ::xsd::cxx::xml::dom::name< char >(i));
-
-        // alpha
-        //
-        if (n.name() == "alpha" && n.namespace_().empty())
-        {
-            if (!alpha_.present())
-            {
-                this->alpha_.set(alpha_traits::create(i, f, this));
-                continue;
-            }
-        }
-
-        // beta
-        //
-        if (n.name() == "beta" && n.namespace_().empty())
-        {
-            if (!beta_.present())
-            {
-                this->beta_.set(beta_traits::create(i, f, this));
-                continue;
-            }
-        }
-
-        // gamma
-        //
-        if (n.name() == "gamma" && n.namespace_().empty())
-        {
-            if (!gamma_.present())
-            {
-                this->gamma_.set(gamma_traits::create(i, f, this));
-                continue;
-            }
-        }
-
-        // trackedMuscles
-        //
-        if (n.name() == "trackedMuscles" && n.namespace_().empty())
-        {
-            ::std::auto_ptr< trackedMuscles_type > r(
-                trackedMuscles_traits::create(i, f, this));
-
-            if (!trackedMuscles_.present())
-            {
-                this->trackedMuscles_.set(r);
-                continue;
-            }
-        }
-
-        // predictedMuscles
-        //
-        if (n.name() == "predictedMuscles" && n.namespace_().empty())
-        {
-            ::std::auto_ptr< predictedMuscles_type > r(
-                predictedMuscles_traits::create(i, f, this));
-
-            if (!predictedMuscles_.present())
-            {
-                this->predictedMuscles_.set(r);
-                continue;
-            }
-        }
-
-        // DOFsOptimized
-        //
-        if (n.name() == "DOFsOptimized" && n.namespace_().empty())
-        {
-            ::std::auto_ptr< DOFsOptimized_type > r(
-                DOFsOptimized_traits::create(i, f, this));
-
-            if (!DOFsOptimized_.present())
-            {
-                this->DOFsOptimized_.set(r);
-                continue;
-            }
-        }
-
-        // performanceCriterion
-        //
-        if (n.name() == "performanceCriterion" && n.namespace_().empty())
-        {
-            ::std::auto_ptr< performanceCriterion_type > r(
-                performanceCriterion_traits::create(i, f, this));
-
-            if (!performanceCriterion_.present())
-            {
-                this->performanceCriterion_.set(r);
-                continue;
-            }
-        }
-
-        break;
-    }
-
-    if (!alpha_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "alpha",
-            "");
-    }
-
-    if (!beta_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "beta",
-            "");
-    }
-
-    if (!gamma_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "gamma",
-            "");
-    }
-
-    if (!trackedMuscles_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "trackedMuscles",
-            "");
-    }
-
-    if (!predictedMuscles_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "predictedMuscles",
-            "");
-    }
-
-    if (!DOFsOptimized_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "DOFsOptimized",
-            "");
-    }
-
-    if (!performanceCriterion_.present())
-    {
-        throw ::xsd::cxx::tree::expected_element< char >(
-            "performanceCriterion",
-            "");
-    }
-}
-
-HybridOptimizationType* HybridOptimizationType::
-_clone(::xml_schema::flags f,
-    ::xml_schema::container* c) const
-{
-    return new class HybridOptimizationType(*this, f, c);
-}
-
-HybridOptimizationType& HybridOptimizationType::
-operator= (const HybridOptimizationType& x)
-{
-    if (this != &x)
-    {
-        static_cast<::xml_schema::type&> (*this) = x;
-        this->alpha_ = x.alpha_;
-        this->beta_ = x.beta_;
-        this->gamma_ = x.gamma_;
-        this->trackedMuscles_ = x.trackedMuscles_;
-        this->predictedMuscles_ = x.predictedMuscles_;
-        this->DOFsOptimized_ = x.DOFsOptimized_;
-        this->performanceCriterion_ = x.performanceCriterion_;
-    }
-
-    return *this;
-}
-
-HybridOptimizationType::
-~HybridOptimizationType()
-{
-}
-
 // OnlineCalibrationType
 //
 
@@ -2442,7 +2019,6 @@ OptimizationType(const Algorithm_type& Algorithm)
     : ::xml_schema::type(),
     Algorithm_(Algorithm, this),
     MuscleInTheLoop_(this),
-    Hybrid_(this),
     OnlineCalibration_(this),
     MuscleParameter_(this)
 {
@@ -2453,7 +2029,6 @@ OptimizationType(::std::auto_ptr< Algorithm_type > Algorithm)
     : ::xml_schema::type(),
     Algorithm_(Algorithm, this),
     MuscleInTheLoop_(this),
-    Hybrid_(this),
     OnlineCalibration_(this),
     MuscleParameter_(this)
 {
@@ -2466,7 +2041,6 @@ OptimizationType(const OptimizationType& x,
     : ::xml_schema::type(x, f, c),
     Algorithm_(x.Algorithm_, f, this),
     MuscleInTheLoop_(x.MuscleInTheLoop_, f, this),
-    Hybrid_(x.Hybrid_, f, this),
     OnlineCalibration_(x.OnlineCalibration_, f, this),
     MuscleParameter_(x.MuscleParameter_, f, this)
 {
@@ -2479,7 +2053,6 @@ OptimizationType(const ::xercesc::DOMElement& e,
     : ::xml_schema::type(e, f | ::xml_schema::flags::base, c),
     Algorithm_(this),
     MuscleInTheLoop_(this),
-    Hybrid_(this),
     OnlineCalibration_(this),
     MuscleParameter_(this)
 {
@@ -2524,20 +2097,6 @@ parse(::xsd::cxx::xml::dom::parser< char >& p,
             if (!this->MuscleInTheLoop_)
             {
                 this->MuscleInTheLoop_.set(r);
-                continue;
-            }
-        }
-
-        // Hybrid
-        //
-        if (n.name() == "Hybrid" && n.namespace_().empty())
-        {
-            ::std::auto_ptr< Hybrid_type > r(
-                Hybrid_traits::create(i, f, this));
-
-            if (!this->Hybrid_)
-            {
-                this->Hybrid_.set(r);
                 continue;
             }
         }
@@ -2596,7 +2155,6 @@ operator= (const OptimizationType& x)
         static_cast<::xml_schema::type&> (*this) = x;
         this->Algorithm_ = x.Algorithm_;
         this->MuscleInTheLoop_ = x.MuscleInTheLoop_;
-        this->Hybrid_ = x.Hybrid_;
         this->OnlineCalibration_ = x.OnlineCalibration_;
         this->MuscleParameter_ = x.MuscleParameter_;
     }

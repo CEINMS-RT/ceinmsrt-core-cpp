@@ -56,10 +56,6 @@ class SimulatedAnnealing
 				std::vector<std::string> dofsList,
 				const ExecutionSimulatedAnnealing& executionSimulatedAnnealing,
 				TorquesComputationT& torquesComputation );
-		//constructor for hybrid annealing
-		/*    SimulatedAnnealing(NMSmodel<Activation, Tendon >& subject,
-		                       std::vector<std::string> dofsList,
-		                       StaticTorquesComputation<ComputationMode, Activation, Tendon >& staticTorquesComputation);*/
 		void optimize();
 		friend std::ostream& operator<< <> ( std::ostream& output, const SimulatedAnnealing& sa );
 

@@ -74,7 +74,6 @@ namespace Logger
 		ForcePlateFilter,
 		IK,
 		ID,
-		NMSTiming,
 		TotalTiming,
 		IKTiming,
 		MTUTiming,
@@ -97,13 +96,13 @@ namespace Logger
 };
 
 template <typename NMSmodelT>
-class OpenSimFileLogger
+class CeinmsFileLogger
 {
 	public:
 
-		OpenSimFileLogger ( const NMSmodelT& subjectModel, const std::string& recordDirectory );
-		OpenSimFileLogger ( const std::string& recordDirectory );
-		~OpenSimFileLogger();
+		CeinmsFileLogger ( const NMSmodelT& subjectModel, const std::string& recordDirectory );
+		CeinmsFileLogger ( const std::string& recordDirectory );
+		~CeinmsFileLogger();
 
 		void addLog ( Logger::LogID logID, const std::vector<std::string>& ColumnName );
 		void addLog ( Logger::LogID logID);
@@ -154,7 +153,7 @@ class OpenSimFileLogger
 #ifdef RPI
   #include "OpenSimFileLoggerRPI.cpp"
 #else
-  #include "OpenSimFileLogger.cpp"
+  #include "CeinmsFileLogger.cpp"
 #endif
 
 #endif // OPENSIMFILELOGGER_H

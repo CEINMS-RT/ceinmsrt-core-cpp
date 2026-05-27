@@ -16,7 +16,6 @@
 namespace NMSModelCfg {
     
     const unsigned OpenLoop = 1000;
-    const unsigned Hybrid   = 2000;
     const unsigned RealTime   = 10000;
                  
     const unsigned ExponentialActivation = 100;
@@ -48,20 +47,6 @@ namespace NMSModelCfg {
                  OpenLoopPiecewiseActivationElasticTendonBiSecOnline     = 1231, 
                  OpenLoopPiecewiseActivationElasticTendonBiSecOffline    = 1232,
                  
-                 HybridExponentialActivationStiffTendonOnline            = 2111, 
-                 HybridExponentialActivationStiffTendonOffline           = 2112, 
-                 HybridExponentialActivationElasticTendonOnline          = 2121, 
-                 HybridExponentialActivationElasticTendonOffline         = 2122, 
-                 HybridExponentialActivationElasticTendonBiSecOnline     = 2131, 
-                 HybridExponentialActivationElasticTendonBiSecOffline    = 2132,
-                 
-                 HybridPiecewiseActivationStiffTendonOnline              = 2211, 
-                 HybridPiecewiseActivationStiffTendonOffline             = 2212,
-                 HybridPiecewiseActivationElasticTendonOnline            = 2221, 
-                 HybridPiecewiseActivationElasticTendonOffline           = 2222, 
-                 HybridPiecewiseActivationElasticTendonBiSecOnline       = 2231, 
-                 HybridPiecewiseActivationElasticTendonBiSecOffline      = 2232,
-
                  RealTimeOpenLoopExponentialActivationStiffTendonOnline	 		= 11111,
                  RealTimeOpenLoopExponentialActivationStiffTendonOffline        = 11112,
                  RealTimeOpenLoopExponentialActivationElasticTendonOnline       = 11121,
@@ -75,20 +60,6 @@ namespace NMSModelCfg {
                  RealTimeOpenLoopPiecewiseActivationElasticTendonOffline        = 11222,
                  RealTimeOpenLoopPiecewiseActivationElasticTendonBiSecOnline    = 11231,
                  RealTimeOpenLoopPiecewiseActivationElasticTendonBiSecOffline   = 11232,
-
-                 RealTimeHybridExponentialActivationStiffTendonOnline           = 12111,
-                 RealTimeHybridExponentialActivationStiffTendonOffline          = 12112,
-                 RealTimeHybridExponentialActivationElasticTendonOnline         = 12121,
-                 RealTimeHybridExponentialActivationElasticTendonOffline        = 12122,
-                 RealTimeHybridExponentialActivationElasticTendonBiSecOnline    = 12131,
-                 RealTimeHybridExponentialActivationElasticTendonBiSecOffline   = 12132,
-
-                 RealTimeHybridPiecewiseActivationStiffTendonOnline             = 12211,
-                 RealTimeHybridPiecewiseActivationStiffTendonOffline            = 12212,
-                 RealTimeHybridPiecewiseActivationElasticTendonOnline           = 12221,
-                 RealTimeHybridPiecewiseActivationElasticTendonOffline          = 12222,
-                 RealTimeHybridPiecewiseActivationElasticTendonBiSecOnline      = 12231,
-                 RealTimeHybridPiecewiseActivationElasticTendonBiSecOffline     = 12232,
                  };
 };
 

@@ -679,8 +679,8 @@ void LmtMaFromMTUSpline::initAnglePlugin()
 #ifdef WINDOWS
 			dynLib = "PluginAngleAndIDFromFile.dll"; // Overrule the xml, name of the read from file plugin
 #else
-#ifdef LINUX
-			dynLib = "PluginAngleAndIDFromFile.so"; // Overrule the xml, name of the read from file plugin
+#ifdef UNIX
+			dynLib = "libPluginAngleAndIDFromFile.so"; // Overrule the xml, name of the read from file plugin
 #endif
 #endif
 		}

@@ -680,6 +680,11 @@ void ModelEvaluationRealTime<NMSmodelT>::initEMGPlugin()
 #ifdef LINUX
 		dynLib = "PluginEMGFiltFromFile.so"; // Overrule the xml, name of the read from file plugin
 #endif
+
+#ifdef UNIX
+		dynLib = "libPluginEMGFiltFromFile.so"; // Overrule the xml, name of the read from file plugin
+#endif
+
 #endif
 	}
 

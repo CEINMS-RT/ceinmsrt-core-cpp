@@ -20,9 +20,6 @@
 #ifdef WIN32
 #include <windows.h>
 #endif
-#define timer   timer_class
-#include <boost/timer.hpp>
-#undef timer
 #include <boost/timer/timer.hpp>
 
 using namespace gl;

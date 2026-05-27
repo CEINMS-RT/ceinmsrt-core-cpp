@@ -47,3 +47,11 @@
 	path = plugin/InsolePlugin
 	url = ../ceinmsrt-plugin-moticon-cpp
 	ignore = dirty
+[submodule "plugin/OSLPlugin"]
+	path = plugin/OSLPlugin
+	url = ../ceinmsrt-plugin-osl-unix-socket-cpp
+	ignore = dirty
+[submodule "plugin/CoaptPlugin"]
+	path = plugin/CoaptPlugin
+	url = ../ceinmsrt-plugin-coapt-unix-socket-cpp
+	ignore = dirty

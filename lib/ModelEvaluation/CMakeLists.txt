@@ -1,5 +1,5 @@
 add_library(FileLogger 
-        OpenSimFileLogger.h
+        CeinmsFileLogger.h
         )
 
 target_link_libraries(FileLogger PUBLIC

@@ -75,29 +75,23 @@ void ExecutionXmlReader::readXml()
 		}
 
 		ExecutionType::NMSmodel_type::type_type& myType ( myModel.type() );
-		ExecutionType::NMSmodel_type::type_type::hybrid_optional& myHybOpt ( myType.hybrid() );
 		ExecutionType::NMSmodel_type::type_type::openLoop_optional& myOLOpt ( myType.openLoop() );
 		ExecutionType::NMSmodel_type::type_type::realTime_optional& myRTOpt ( myType.realTime() );
 
-		if ( myHybOpt.present() )
-			runMode_ += NMSModelCfg::Hybrid;
-		else if ( myOLOpt.present() )
+		if ( myOLOpt.present() )
 			runMode_ += NMSModelCfg::OpenLoop;
 		else if ( myRTOpt.present() )
 		{
 			isRealTime_ = true;
 			runMode_ += NMSModelCfg::RealTime;
-			ExecutionType::NMSmodel_type::type_type::hybrid_optional& myRTHybOpt ( myType.realTime()->hybrid() );
 			ExecutionType::NMSmodel_type::type_type::openLoop_optional& myRTOLOpt ( myType.realTime()->openLoop() );
 
-			if ( myRTHybOpt.present() )
-				runMode_ += NMSModelCfg::Hybrid;
-			else if ( myRTOLOpt.present() )
+			if ( myRTOLOpt.present() )
 				runMode_ += NMSModelCfg::OpenLoop;
 		}
 		else
 		{
-			cout << "invalid XML: Hybrid/OpenLoop/realTime Type not found\n" << std::flush;
+			cout << "invalid XML: OpenLoop/realTime Type not found\n" << std::flush;
 			exit ( EXIT_FAILURE );
 		}
 
@@ -362,72 +356,6 @@ bool ExecutionXmlReader::useOfEMGAndAnglePlugin()
 bool ExecutionXmlReader::useOfOptimizationPlugin()
 {
 	return executionPointer_->ConsumerPlugin().OptimizationDevice().present();
-}
-
-void ExecutionXmlReader::getMusclesToPredict ( std::vector<std::string>& musclesToPredict )
-{
-
-	ExecutionType::NMSmodel_type& myModel ( executionPointer_->NMSmodel() );
-	ExecutionType::NMSmodel_type::type_type& myType ( myModel.type() );
-	ExecutionType::NMSmodel_type::type_type::hybrid_optional& myHybOpt ( myType.hybrid() );
-
-	if ( !myHybOpt.present() )
-	{
-		cout << "Cannot get hybrid parameters, hybrid option not selected\n" << std::flush;
-		exit ( EXIT_FAILURE );
-	}
-
-
-	musclesToPredict.clear();
-	HybridType::predictedMuscles_type& predictedMuscles ( myType.hybrid()->predictedMuscles() );
-
-	for ( unsigned mi = 0; mi < predictedMuscles.size(); ++mi )
-		musclesToPredict.push_back ( predictedMuscles.at ( mi ) );
-}
-
-
-void ExecutionXmlReader::getMusclesToTrack ( std::vector<std::string>& musclesToTrack )
-{
-
-	ExecutionType::NMSmodel_type& myModel ( executionPointer_->NMSmodel() );
-	ExecutionType::NMSmodel_type::type_type& myType ( myModel.type() );
-	ExecutionType::NMSmodel_type::type_type::hybrid_optional& myHybOpt ( myType.hybrid() );
-
-	if ( !myHybOpt.present() )
-	{
-		cout << "Cannot get hybrid parameters, hybrid option not selected\n" << std::flush;
-		exit ( EXIT_FAILURE );
-	}
-
-
-	musclesToTrack.clear();
-	HybridType::trackedMuscles_type& trackedMuscles ( myType.hybrid()->trackedMuscles() );
-
-	for ( unsigned mi = 0; mi < trackedMuscles.size(); ++mi )
-		musclesToTrack.push_back ( trackedMuscles.at ( mi ) );
-}
-
-void ExecutionXmlReader::getHybridWeightings ( double& alpha, double& beta, double& gamma )
-{
-
-	ExecutionType::NMSmodel_type& myModel ( executionPointer_->NMSmodel() );
-	ExecutionType::NMSmodel_type::type_type& myType ( myModel.type() );
-	ExecutionType::NMSmodel_type::type_type::hybrid_optional& myHybOpt ( myType.hybrid() );
-
-	if ( !myHybOpt.present() )
-	{
-		cout << "Cannot get hybrid parameters, hybrid option not selected\n" << std::flush;
-		exit ( EXIT_FAILURE );
-	}
-
-	HybridType::alpha_type& myAlpha ( myType.hybrid()->alpha() );
-	alpha = myAlpha;
-
-	HybridType::beta_type& myBeta ( myType.hybrid()->beta() );
-	beta = myBeta;
-
-	HybridType::gamma_type& myGamma ( myType.hybrid()->gamma() );
-	gamma = myGamma;
 }
 
 // void ExecutionXmlReader::getDynLib ( string& EMGDynLib, string& angleDynLib ) const

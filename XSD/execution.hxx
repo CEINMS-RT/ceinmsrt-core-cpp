@@ -226,11 +226,8 @@ class TendonElementType;
 class TendonType;
 class ActivationElementType;
 class ActivationType;
-class HybridAlgorithmSimulatedAnnealingType;
-class HybridAlgorithmType;
 class OpenLoopType;
 class MuscleListType;
-class HybridType;
 class DevicePluginType;
 class RealTimeType;
 class OnlineType;
@@ -501,207 +498,6 @@ class ActivationType: public ::xml_schema::type
   piecewise_optional piecewise_;
 };
 
-class HybridAlgorithmSimulatedAnnealingType: public ::xml_schema::type
-{
-  public:
-  // noEpsilon
-  //
-  typedef ::xml_schema::int_ noEpsilon_type;
-  typedef ::xsd::cxx::tree::traits< noEpsilon_type, char > noEpsilon_traits;
-
-  const noEpsilon_type&
-  noEpsilon () const;
-
-  noEpsilon_type&
-  noEpsilon ();
-
-  void
-  noEpsilon (const noEpsilon_type& x);
-
-  // rt
-  //
-  typedef ::xml_schema::double_ rt_type;
-  typedef ::xsd::cxx::tree::traits< rt_type, char, ::xsd::cxx::tree::schema_type::double_ > rt_traits;
-
-  const rt_type&
-  rt () const;
-
-  rt_type&
-  rt ();
-
-  void
-  rt (const rt_type& x);
-
-  // T
-  //
-  typedef ::xml_schema::double_ T_type;
-  typedef ::xsd::cxx::tree::traits< T_type, char, ::xsd::cxx::tree::schema_type::double_ > T_traits;
-
-  const T_type&
-  T () const;
-
-  T_type&
-  T ();
-
-  void
-  T (const T_type& x);
-
-  // NS
-  //
-  typedef ::xml_schema::int_ NS_type;
-  typedef ::xsd::cxx::tree::traits< NS_type, char > NS_traits;
-
-  const NS_type&
-  NS () const;
-
-  NS_type&
-  NS ();
-
-  void
-  NS (const NS_type& x);
-
-  // NT
-  //
-  typedef ::xml_schema::int_ NT_type;
-  typedef ::xsd::cxx::tree::traits< NT_type, char > NT_traits;
-
-  const NT_type&
-  NT () const;
-
-  NT_type&
-  NT ();
-
-  void
-  NT (const NT_type& x);
-
-  // epsilon
-  //
-  typedef ::xml_schema::double_ epsilon_type;
-  typedef ::xsd::cxx::tree::traits< epsilon_type, char, ::xsd::cxx::tree::schema_type::double_ > epsilon_traits;
-
-  const epsilon_type&
-  epsilon () const;
-
-  epsilon_type&
-  epsilon ();
-
-  void
-  epsilon (const epsilon_type& x);
-
-  // maxNoEval
-  //
-  typedef ::xml_schema::int_ maxNoEval_type;
-  typedef ::xsd::cxx::tree::traits< maxNoEval_type, char > maxNoEval_traits;
-
-  const maxNoEval_type&
-  maxNoEval () const;
-
-  maxNoEval_type&
-  maxNoEval ();
-
-  void
-  maxNoEval (const maxNoEval_type& x);
-
-  // Constructors.
-  //
-  HybridAlgorithmSimulatedAnnealingType (const noEpsilon_type&,
-                                         const rt_type&,
-                                         const T_type&,
-                                         const NS_type&,
-                                         const NT_type&,
-                                         const epsilon_type&,
-                                         const maxNoEval_type&);
-
-  HybridAlgorithmSimulatedAnnealingType (const ::xercesc::DOMElement& e,
-                                         ::xml_schema::flags f = 0,
-                                         ::xml_schema::container* c = 0);
-
-  HybridAlgorithmSimulatedAnnealingType (const HybridAlgorithmSimulatedAnnealingType& x,
-                                         ::xml_schema::flags f = 0,
-                                         ::xml_schema::container* c = 0);
-
-  virtual HybridAlgorithmSimulatedAnnealingType*
-  _clone (::xml_schema::flags f = 0,
-          ::xml_schema::container* c = 0) const;
-
-  HybridAlgorithmSimulatedAnnealingType&
-  operator= (const HybridAlgorithmSimulatedAnnealingType& x);
-
-  virtual 
-  ~HybridAlgorithmSimulatedAnnealingType ();
-
-  // Implementation.
-  //
-  protected:
-  void
-  parse (::xsd::cxx::xml::dom::parser< char >&,
-         ::xml_schema::flags);
-
-  protected:
-  ::xsd::cxx::tree::one< noEpsilon_type > noEpsilon_;
-  ::xsd::cxx::tree::one< rt_type > rt_;
-  ::xsd::cxx::tree::one< T_type > T_;
-  ::xsd::cxx::tree::one< NS_type > NS_;
-  ::xsd::cxx::tree::one< NT_type > NT_;
-  ::xsd::cxx::tree::one< epsilon_type > epsilon_;
-  ::xsd::cxx::tree::one< maxNoEval_type > maxNoEval_;
-};
-
-class HybridAlgorithmType: public ::xml_schema::type
-{
-  public:
-  // hybridSimulatedAnnealing
-  //
-  typedef ::HybridAlgorithmSimulatedAnnealingType hybridSimulatedAnnealing_type;
-  typedef ::xsd::cxx::tree::traits< hybridSimulatedAnnealing_type, char > hybridSimulatedAnnealing_traits;
-
-  const hybridSimulatedAnnealing_type&
-  hybridSimulatedAnnealing () const;
-
-  hybridSimulatedAnnealing_type&
-  hybridSimulatedAnnealing ();
-
-  void
-  hybridSimulatedAnnealing (const hybridSimulatedAnnealing_type& x);
-
-  void
-  hybridSimulatedAnnealing (::std::auto_ptr< hybridSimulatedAnnealing_type > p);
-
-  // Constructors.
-  //
-  HybridAlgorithmType (const hybridSimulatedAnnealing_type&);
-
-  HybridAlgorithmType (::std::auto_ptr< hybridSimulatedAnnealing_type >);
-
-  HybridAlgorithmType (const ::xercesc::DOMElement& e,
-                       ::xml_schema::flags f = 0,
-                       ::xml_schema::container* c = 0);
-
-  HybridAlgorithmType (const HybridAlgorithmType& x,
-                       ::xml_schema::flags f = 0,
-                       ::xml_schema::container* c = 0);
-
-  virtual HybridAlgorithmType*
-  _clone (::xml_schema::flags f = 0,
-          ::xml_schema::container* c = 0) const;
-
-  HybridAlgorithmType&
-  operator= (const HybridAlgorithmType& x);
-
-  virtual 
-  ~HybridAlgorithmType ();
-
-  // Implementation.
-  //
-  protected:
-  void
-  parse (::xsd::cxx::xml::dom::parser< char >&,
-         ::xml_schema::flags);
-
-  protected:
-  ::xsd::cxx::tree::one< hybridSimulatedAnnealing_type > hybridSimulatedAnnealing_;
-};
-
 class OpenLoopType: public ::xml_schema::type
 {
   public:
@@ -771,152 +567,6 @@ class MuscleListType: public ::xml_schema::simple_type,
 
   virtual 
   ~MuscleListType ();
-};
-
-class HybridType: public ::xml_schema::type
-{
-  public:
-  // alpha
-  //
-  typedef ::xml_schema::double_ alpha_type;
-  typedef ::xsd::cxx::tree::traits< alpha_type, char, ::xsd::cxx::tree::schema_type::double_ > alpha_traits;
-
-  const alpha_type&
-  alpha () const;
-
-  alpha_type&
-  alpha ();
-
-  void
-  alpha (const alpha_type& x);
-
-  // beta
-  //
-  typedef ::xml_schema::double_ beta_type;
-  typedef ::xsd::cxx::tree::traits< beta_type, char, ::xsd::cxx::tree::schema_type::double_ > beta_traits;
-
-  const beta_type&
-  beta () const;
-
-  beta_type&
-  beta ();
-
-  void
-  beta (const beta_type& x);
-
-  // gamma
-  //
-  typedef ::xml_schema::double_ gamma_type;
-  typedef ::xsd::cxx::tree::traits< gamma_type, char, ::xsd::cxx::tree::schema_type::double_ > gamma_traits;
-
-  const gamma_type&
-  gamma () const;
-
-  gamma_type&
-  gamma ();
-
-  void
-  gamma (const gamma_type& x);
-
-  // trackedMuscles
-  //
-  typedef ::MuscleListType trackedMuscles_type;
-  typedef ::xsd::cxx::tree::traits< trackedMuscles_type, char > trackedMuscles_traits;
-
-  const trackedMuscles_type&
-  trackedMuscles () const;
-
-  trackedMuscles_type&
-  trackedMuscles ();
-
-  void
-  trackedMuscles (const trackedMuscles_type& x);
-
-  void
-  trackedMuscles (::std::auto_ptr< trackedMuscles_type > p);
-
-  // predictedMuscles
-  //
-  typedef ::MuscleListType predictedMuscles_type;
-  typedef ::xsd::cxx::tree::traits< predictedMuscles_type, char > predictedMuscles_traits;
-
-  const predictedMuscles_type&
-  predictedMuscles () const;
-
-  predictedMuscles_type&
-  predictedMuscles ();
-
-  void
-  predictedMuscles (const predictedMuscles_type& x);
-
-  void
-  predictedMuscles (::std::auto_ptr< predictedMuscles_type > p);
-
-  // algorithm
-  //
-  typedef ::HybridAlgorithmType algorithm_type;
-  typedef ::xsd::cxx::tree::traits< algorithm_type, char > algorithm_traits;
-
-  const algorithm_type&
-  algorithm () const;
-
-  algorithm_type&
-  algorithm ();
-
-  void
-  algorithm (const algorithm_type& x);
-
-  void
-  algorithm (::std::auto_ptr< algorithm_type > p);
-
-  // Constructors.
-  //
-  HybridType (const alpha_type&,
-              const beta_type&,
-              const gamma_type&,
-              const trackedMuscles_type&,
-              const predictedMuscles_type&,
-              const algorithm_type&);
-
-  HybridType (const alpha_type&,
-              const beta_type&,
-              const gamma_type&,
-              const trackedMuscles_type&,
-              const predictedMuscles_type&,
-              ::std::auto_ptr< algorithm_type >);
-
-  HybridType (const ::xercesc::DOMElement& e,
-              ::xml_schema::flags f = 0,
-              ::xml_schema::container* c = 0);
-
-  HybridType (const HybridType& x,
-              ::xml_schema::flags f = 0,
-              ::xml_schema::container* c = 0);
-
-  virtual HybridType*
-  _clone (::xml_schema::flags f = 0,
-          ::xml_schema::container* c = 0) const;
-
-  HybridType&
-  operator= (const HybridType& x);
-
-  virtual 
-  ~HybridType ();
-
-  // Implementation.
-  //
-  protected:
-  void
-  parse (::xsd::cxx::xml::dom::parser< char >&,
-         ::xml_schema::flags);
-
-  protected:
-  ::xsd::cxx::tree::one< alpha_type > alpha_;
-  ::xsd::cxx::tree::one< beta_type > beta_;
-  ::xsd::cxx::tree::one< gamma_type > gamma_;
-  ::xsd::cxx::tree::one< trackedMuscles_type > trackedMuscles_;
-  ::xsd::cxx::tree::one< predictedMuscles_type > predictedMuscles_;
-  ::xsd::cxx::tree::one< algorithm_type > algorithm_;
 };
 
 class DevicePluginType: public ::xml_schema::type
@@ -1286,28 +936,7 @@ class RealTimeType: public ::xml_schema::type
   void
   openLoop (::std::auto_ptr< openLoop_type > p);
 
-  // hybrid
-  //
-  typedef ::HybridType hybrid_type;
-  typedef ::xsd::cxx::tree::optional< hybrid_type > hybrid_optional;
-  typedef ::xsd::cxx::tree::traits< hybrid_type, char > hybrid_traits;
-
-  const hybrid_optional&
-  hybrid () const;
-
-  hybrid_optional&
-  hybrid ();
-
-  void
-  hybrid (const hybrid_type& x);
-
-  void
-  hybrid (const hybrid_optional& x);
-
-  void
-  hybrid (::std::auto_ptr< hybrid_type > p);
-
-  // Constructors.
+    // Constructors.
   //
   RealTimeType ();
 
@@ -1338,7 +967,6 @@ class RealTimeType: public ::xml_schema::type
 
   protected:
   openLoop_optional openLoop_;
-  hybrid_optional hybrid_;
 };
 
 class OnlineType: public ::xml_schema::type
@@ -1508,27 +1136,6 @@ class TypeType: public ::xml_schema::type
   void
   openLoop (::std::auto_ptr< openLoop_type > p);
 
-  // hybrid
-  //
-  typedef ::HybridType hybrid_type;
-  typedef ::xsd::cxx::tree::optional< hybrid_type > hybrid_optional;
-  typedef ::xsd::cxx::tree::traits< hybrid_type, char > hybrid_traits;
-
-  const hybrid_optional&
-  hybrid () const;
-
-  hybrid_optional&
-  hybrid ();
-
-  void
-  hybrid (const hybrid_type& x);
-
-  void
-  hybrid (const hybrid_optional& x);
-
-  void
-  hybrid (::std::auto_ptr< hybrid_type > p);
-
   // realTime
   //
   typedef ::RealTimeType realTime_type;
@@ -1581,7 +1188,6 @@ class TypeType: public ::xml_schema::type
 
   protected:
   openLoop_optional openLoop_;
-  hybrid_optional hybrid_;
   realTime_optional realTime_;
 };
 

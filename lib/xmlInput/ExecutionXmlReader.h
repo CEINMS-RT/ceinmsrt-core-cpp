@@ -26,7 +26,6 @@ public:
     NMSModelCfg::RunMode getRunMode() const;
     void getMusclesToPredict(std::vector<std::string>& musclesToPredict);
     void getMusclesToTrack(std::vector<std::string>& musclesToTrack);
-    void getHybridWeightings(double& alpha, double& beta, double& gamma);
 //     void getDynLib(std::string& EMGDynLib, std::string& angleDynLib) const;
     bool isRealTime();
 	

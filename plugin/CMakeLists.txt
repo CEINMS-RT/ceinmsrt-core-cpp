@@ -132,13 +132,30 @@ IF(COMPILE_XSENS_PLUGIN)
 	add_subdirectory(XsensPlugin)
 ENDIF()
 
+option(COMPILE_OSL_PLUGIN "Setting this parameter to ON will compile the OSL plugin for CEINMS." OFF)
+IF(COMPILE_OSL_PLUGIN)
+	file(GLOB RESULT ${PROJECT_SOURCE_DIR}/plugin/OSLPlugin/*.txt) #this bit of code if for not erasing thew plugin if we are working on it. otherwise is call git submodules init and erase ther change
+	if(RESULT STREQUAL "")
+		execute_process(
+			COMMAND git submodule update --init plugin/OSLPlugin
+			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		)
+	else()
+		message(WARNING "Submodule OSLPlugin not initialized because folder OSLPlugin folder already contains a .txt file (mostly a Cmakelist.txt). Empty the folder if you want it initialize.")
+	endif()
+	add_subdirectory(OSLPlugin)
+ENDIF()
 
-
-
-
-
-
-
-
-
-
+option(COMPILE_COAPT_PLUGIN "Setting this parameter to ON will compile the COAPT plugin for CEINMS." OFF)
+IF(COMPILE_COAPT_PLUGIN)
+	file(GLOB RESULT ${PROJECT_SOURCE_DIR}/plugin/CoaptPlugin/*.txt) #this bit of code if for not erasing thew plugin if we are working on it. otherwise is call git submodules init and erase ther change
+	if(RESULT STREQUAL "")
+		execute_process(
+			COMMAND git submodule update --init plugin/CoaptPlugin
+			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		)
+	else()
+		message(WARNING "Submodule CoaptPlugin not initialized because folder CoaptPlugin folder already contains a .txt file (mostly a Cmakelist.txt). Empty the folder if you want it initialize.")
+	endif()
+	add_subdirectory(CoaptPlugin)
+ENDIF()

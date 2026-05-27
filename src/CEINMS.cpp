@@ -27,7 +27,6 @@
 #include "ExternalTorqueFromFile.h"
 // #include "ModelEvaluationOnline.h"
 // #include "ModelEvaluationOffline.h"
-// #include "ModelEvaluationHybrid.h"
 
 #include "SetupDataStructure.h"
 #include "Activation/ExponentialActivation.h"
@@ -36,7 +35,6 @@
 #include "Tendon/ElasticTendon.h"
 #include "Tendon/ElasticTendon_BiSec.h"
 // #include "ErrorMinimizerAnnealing.h"
-// #include "HybridWeightings.h"
 #include "Curve.h"
 #include "ExecutionXmlReader.h"
 #include "DynLib.h"
@@ -62,12 +60,6 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-
-/**
- * TODO: add Hybrid model
- * 		Joint Compression
- *
- */
 
 void CEINMSSigintHandler(int sig);
 void timerToEndCEINMS(double timer);
@@ -531,6 +523,7 @@ void timerToEndCEINMS(double timer)  // function to kill CEINMS without Gui, whe
 
 }
 
+#ifdef USE_GUI
 void timerToEndCEINMSwithGui(double timer, MainWindow &gui)  // function to kill CEINMS with Gui, when time is out 
 {
 	
@@ -551,8 +544,8 @@ void timerToEndCEINMSwithGui(double timer, MainWindow &gui)  // function to kill
 		gui.close();  // kill gui
 	}
 #endif
-
 }
+#endif
 
 template<typename T1, typename T2, typename T3, typename T4, typename T5>
 void runThreads(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5)

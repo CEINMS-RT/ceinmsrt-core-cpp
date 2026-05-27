@@ -1,7 +1,19 @@
+// This source code is part of:
+//
+// "CEINMS-RT: an open-source framework for the continuous neuro-mechanical model-based control of wearable robots".
+// Copyright (C) 2024 Massimo Sartori, Mohamed Irfan Refai, Lucas Avanci Gaudio, Christopher Pablo Cop, Donatella Simonetti, Federica Damonte, David G. Lloyd, Claudio Pizzolato, Guillaume Durandau.
+//
+// CEINMS-RT is an open source software. Any changes to this code, should be shared back in the open repository: https://github.com/CEINMS-RT. See license as described here: https://github.com/CEINMS-RT/ceinmsrt-core-cpp/blob/main/LICENSE.
+//
+// The methodologies and ideas implemented in this code are described in the manuscripts below, which should be cited in all publications making use of this code:
+//
+// Massimo Sartori, Mohamed Irfan Refai, Lucas Avanci Gaudio, Christopher Pablo Cop, Donatella Simonetti, Federica Damonte, David G. Lloyd, Claudio Pizzolato, Guillaume Durandau., (2024) "CEINMS-RT: an open-source framework for the continuous neuro-mechanical model-based control of wearable robots. TechRxiv. DOI: 10.36227/techrxiv.173397962.28177284/v1"
+//
+
 #include "ExecutionOptimizationXmlReader.h"
 
 
-ExecutionOptimizationXmlReader::ExecutionOptimizationXmlReader(const std::string& filename) : useOfMuscleInTheLoop_(false), useOfHybrid_(false), simulatedAnealing_(false), lm_(false), simplex_(false)
+ExecutionOptimizationXmlReader::ExecutionOptimizationXmlReader(const std::string& filename) : useOfMuscleInTheLoop_(false), simulatedAnealing_(false), lm_(false), simplex_(false)
 {
 	try
 	{
@@ -24,12 +36,6 @@ ExecutionOptimizationXmlReader::~ExecutionOptimizationXmlReader()
 bool ExecutionOptimizationXmlReader::UseOfMuscleInTheLoop() {
 	return useOfMuscleInTheLoop_;
 }
-
-bool ExecutionOptimizationXmlReader::UseOfHybrid()
-{
-	return useOfHybrid_;
-}
-
 
 bool ExecutionOptimizationXmlReader::UseOfOnlineCalibration()
 {
@@ -100,33 +106,6 @@ int ExecutionOptimizationXmlReader::getnCyclesOptimization() {
 }
 
 
-// Hybrid Optimization
-std::vector<std::string> ExecutionOptimizationXmlReader::getHybridMuscleWithEMGToPredict()
-{
-	return hybridMuscleWithEMGToPredict_;
-}
-
-std::vector<std::string> ExecutionOptimizationXmlReader::getHybridMuscleWithEMG()
-{
-	return hybridMuscleWithEMG_;
-}
-
-HybridWeightings ExecutionOptimizationXmlReader::getHybridWeightings()
-{
-	return hybridWeightings_;
-}
-
-std::string ExecutionOptimizationXmlReader::getPerformanceCriterion()
-{
-	return performanceCriterion_;
-}
-
-std::vector<std::string> ExecutionOptimizationXmlReader::getHybridDOFsOptimized()
-{
-	return hybridDOFsOptimized_;
-}
-
-
 // Simulated Annealing
 double ExecutionOptimizationXmlReader::getNoEpsilon()
 {
@@ -168,19 +147,6 @@ int ExecutionOptimizationXmlReader::getBufferSize()
 	return bufferSize_;
 }
 
-std::vector<double> ExecutionOptimizationXmlReader::getMuscleForceTreshold()
-{
-	return muscleForceTreshold_;
-}
-
-std::vector<double> ExecutionOptimizationXmlReader::getMuscleLengthTreshold()
-{
-	return muscleLengthTreshold_;
-}
-
-
-
-
 // >> Read the XML file
 void ExecutionOptimizationXmlReader::readXml() {
 
@@ -212,66 +178,10 @@ void ExecutionOptimizationXmlReader::readXml() {
 	}
 
 
-	useOfHybrid_ = executionPointer_->Hybrid().present();
-	if (useOfHybrid_)
-	{
-		OptimizationType::Hybrid_type::predictedMuscles_type& predictedMuscles = executionPointer_->Hybrid().get().predictedMuscles();
-		OptimizationType::Hybrid_type::trackedMuscles_type& trackedMuscles = executionPointer_->Hybrid().get().trackedMuscles();
-
-		for (OptimizationType::Hybrid_type::predictedMuscles_type::const_iterator it = predictedMuscles.begin(); it != predictedMuscles.end(); it++)
-			hybridMuscleWithEMGToPredict_.push_back(*it);
-
-		for (OptimizationType::Hybrid_type::trackedMuscles_type::const_iterator it = trackedMuscles.begin(); it != trackedMuscles.end(); it++)
-			hybridMuscleWithEMG_.push_back(*it);
-
-		hybridWeightings_.alpha = executionPointer_->Hybrid().get().alpha();
-		hybridWeightings_.beta = executionPointer_->Hybrid().get().beta();
-		hybridWeightings_.gamma = executionPointer_->Hybrid().get().gamma();
-
-		OptimizationType::Hybrid_type::DOFsOptimized_type& DOFsOptimized = executionPointer_->Hybrid().get().DOFsOptimized();
-		for (OptimizationType::Hybrid_type::DOFsOptimized_type::const_iterator it = DOFsOptimized.begin(); it != DOFsOptimized.end(); it++)
-			hybridDOFsOptimized_.push_back(*it);
-
-		performanceCriterion_ = executionPointer_->Hybrid().get().performanceCriterion();
-	}
-
-
 	useOfOnlineCalibration_ = executionPointer_->OnlineCalibration().present();
 	if (useOfOnlineCalibration_)
 	{
-		OptimizationType::Hybrid_type::predictedMuscles_type& predictedMuscles = executionPointer_->OnlineCalibration().get().predictedMuscles();
-		OptimizationType::Hybrid_type::trackedMuscles_type& trackedMuscles = executionPointer_->OnlineCalibration().get().trackedMuscles();
-
-		for (OptimizationType::Hybrid_type::predictedMuscles_type::const_iterator it = predictedMuscles.begin(); it != predictedMuscles.end(); it++)
-			hybridMuscleWithEMGToPredict_.push_back(*it);
-
-		for (OptimizationType::Hybrid_type::trackedMuscles_type::const_iterator it = trackedMuscles.begin(); it != trackedMuscles.end(); it++)
-			hybridMuscleWithEMG_.push_back(*it);
-
 		bufferSize_ = executionPointer_->OnlineCalibration().get().BufferSize();
-	}
-
-
-	useOfMuscleParameter_ = executionPointer_->MuscleParameter().present();
-	if (useOfMuscleParameter_)
-	{
-		OptimizationType::Hybrid_type::predictedMuscles_type& predictedMuscles = executionPointer_->MuscleParameter().get().trackedMuscles();
-
-		for (OptimizationType::Hybrid_type::predictedMuscles_type::const_iterator it = predictedMuscles.begin(); it != predictedMuscles.end(); it++)
-			hybridMuscleWithEMGToPredict_.push_back(*it);
-
-		OptimizationType::MuscleParameter_type::MuscleForceTreshold_type& muscleForceTreshold = executionPointer_->MuscleParameter().get().MuscleForceTreshold();
-		OptimizationType::MuscleParameter_type::MuscleForceTreshold_type& muscleLengthTreshold = executionPointer_->MuscleParameter().get().MuscleLengthTreshold();
-
-		for (OptimizationType::MuscleParameter_type::MuscleForceTreshold_type::const_iterator it = muscleForceTreshold.begin(); it != muscleForceTreshold.end(); it++)
-			muscleForceTreshold_.push_back(*it);
-
-		for (OptimizationType::MuscleParameter_type::MuscleForceTreshold_type::const_iterator it = muscleLengthTreshold.begin(); it != muscleLengthTreshold.end(); it++)
-			muscleLengthTreshold_.push_back(*it);
-
-		hybridWeightings_.alpha = executionPointer_->MuscleParameter().get().alpha();
-		hybridWeightings_.beta = executionPointer_->MuscleParameter().get().beta();
-		hybridWeightings_.gamma = executionPointer_->MuscleParameter().get().gamma();
 	}
 
 

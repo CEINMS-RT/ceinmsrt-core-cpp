@@ -31,7 +31,11 @@ target_link_libraries(CEINMS
         Boost::timer
 		XMLIKIDInterpreter
         ${windows_libs}
-        qcustomplot)
+        )   
+
+        if (USE_GUI)
+            target_link_libraries(CEINMS qcustomplot)
+        endif()
 
 if (CALIBRATION)
 
@@ -64,10 +68,16 @@ if (CALIBRATION)
 		Boost::filesystem
 		Boost::thread
 		Boost::timer
-		Boost::system
-		Qt5::Widgets
-		qcustomplot)
+        Boost::system
+		#Qt5::Widgets
+		#qcustomplot
+        )
 
+        if (USE_GUI)
+        target_link_libraries(calibrate 		
+            Qt5::Widgets
+		    qcustomplot)
+        endif()
 endif ()
 
 install(TARGETS CEINMS

@@ -27,8 +27,9 @@ target_link_libraries(CEINMS
         XercesC::XercesC
         ${QT_LIBRARIES}
         Boost::thread
-        Boost::filesystem
         Boost::timer
+        Boost::filesystem
+        Boost::system
 		XMLIKIDInterpreter
         ${windows_libs}
         )   

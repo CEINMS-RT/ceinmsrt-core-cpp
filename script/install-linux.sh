@@ -104,6 +104,6 @@ mkdir -p build
 cd build
 
 # Run CMake with GCC and necessary flags
-cmake .. -DUSE_GUI=ON -DCOMPILE_PLUGIN=OFF -DOpenSim_DIR=~/opensim-core/cmake -Wno-dev -DCMAKE_CXX_FLAGS="-std=c++14 -w" -DCALIBRATION_REFLEX=ON -DCMAKE_BUILD_TYPE=$DEBUG_TYPE
+cmake .. -DUSE_GUI=OFF -DCOMPILE_PLUGIN=ON -DOpenSim_DIR=~/opensim-core/cmake -Wno-dev -DCMAKE_CXX_FLAGS="-std=c++14 -w" -DCALIBRATION_REFLEX=ON -DCMAKE_BUILD_TYPE=$DEBUG_TYPE
 cmake --build .
 

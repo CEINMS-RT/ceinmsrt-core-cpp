@@ -25,7 +25,8 @@ if (USE_OPENSIM)
             XMLExecutionInterpreter
             osimTools
             XercesC::XercesC
-            Boost::system)
+            Boost::system
+            Boost::filesystem)
 
     if (USE_MPI)
         add_library(MTUSplineToolWriteMPI STATIC

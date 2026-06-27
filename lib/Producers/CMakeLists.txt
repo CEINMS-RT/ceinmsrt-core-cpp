@@ -73,7 +73,8 @@ target_link_libraries(DynLib
         XMLExecutionInterpreter
         Boost::chrono
         Boost::timer
-        Boost::system)
+        Boost::system
+        Boost::filesystem)
 		
 target_compile_features(DynLib PUBLIC cxx_std_17)
 target_compile_definitions(DynLib PUBLIC -D_HAS_STD_BYTE=0)
